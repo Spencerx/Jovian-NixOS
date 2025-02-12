@@ -306,9 +306,8 @@ steamos-efi.ignore = true
 steamos-kdumpst-layer.ignore = true
 steamos-log-submitter.ignore = true
 
-# unused
-# FIXME: package when wired up on Steam side
-steamos-manager.ignore = true
+# not used yet? track this anyway for when it becomes used
+steamos-manager.map = true
 
 # not relevant to us
 steamos-media-creation-git.ignore = true
