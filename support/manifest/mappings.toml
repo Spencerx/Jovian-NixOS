@@ -53,7 +53,7 @@ ckbcomp.ignore = true
 clang.check = "18.1.8-4.2"
 
 # unused
-debos-git.ignore = true
+debos.ignore = true
 
 # A/B stuff
 desync.ignore = true
