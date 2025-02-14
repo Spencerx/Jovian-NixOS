@@ -56,9 +56,6 @@ buildLinux (args // rec {
     # Jovian: unused?
     # SND_SOC_AMD_RENOIR_MACH = no;
 
-    SND_SOC_AMD_ACP6x = no;
-    # Jovian: unused?
-    # SND_SOC_AMD_YC_MACH = no;
     SND_AMD_ACP_CONFIG = module;
     SND_SOC_AMD_ACP_COMMON = module;
     # Jovian: unused?
@@ -73,9 +70,6 @@ buildLinux (args // rec {
 
     SND_SOC_AMD_SOF_MACH = module;
     SND_SOC_AMD_RPL_ACP6x = no;
-    SND_SOC_AMD_PS = no;
-    # Jovian: unused?
-    # SND_SOC_AMD_PS_MACH = no;
 
     SND_SOC_SOF = module;
     SND_SOC_SOF_PROBE_WORK_QUEUE = yes;
@@ -112,9 +106,6 @@ buildLinux (args // rec {
     # virtualization-specific drivers.
     HYPERVISOR_GUEST = lib.mkForce no;
 
-    # Disable some options enabled in ArchLinux 6.1.12-arch1 config
-    # Jovian: actually ends up set in the final kernel
-    # X86_AMD_PSTATE = lib.mkForce no;
     # Jovian: we don't enable this before 6.12
     # CONFIG_HAVE_RUST=n
   
@@ -143,11 +134,8 @@ buildLinux (args // rec {
     MITIGATION_CALL_DEPTH_TRACKING = no;
 
     # Jovian: fix fallout from the vendor-set options
-    DRM_AMD_DC_DCN = lib.mkForce (option no);
-    DRM_AMD_DC_HDCP = lib.mkForce (option no);
     DRM_AMD_DC_SI = lib.mkForce (option no);
     DRM_HYPERV = lib.mkForce (option no);
-    DRM_VMWGFX_FBCON = lib.mkForce (option no);
     FB_HYPERV = lib.mkForce (option no);
     INTEL_TDX_GUEST = lib.mkForce (option no);
     KVM_GUEST = lib.mkForce (option no);
