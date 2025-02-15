@@ -58,7 +58,7 @@ let
     prologue = "${writeText "gamescope-session-prologue" ''
       # Don't resholve gamescope so we can use the cap_sys_nice wrapper when available
       # mangohud is not picked up by resholve due to loop_background
-      export PATH=/run/wrappers/bin:${gamescope}/bin
+      export PATH=/run/wrappers/bin:${gamescope}/bin:$PATH
   
       # Make gamescope discover the Steam cursor theme
       export XCURSOR_PATH=${kdePackages.breeze}/share/icons:${steamdeck-hw-theme}/share/icons
