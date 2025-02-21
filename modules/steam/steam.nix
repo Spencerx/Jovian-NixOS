@@ -49,7 +49,7 @@ in
       services.pulseaudio.support32Bit = true;
       hardware.steam-hardware.enable = mkDefault true;
 
-      environment.systemPackages = [ pkgs.gamescope-session pkgs.steamos-polkit-helpers pkgs.steamos-manager ];
+      environment.systemPackages = [ pkgs.gamescope pkgs.gamescope-session pkgs.steamos-polkit-helpers pkgs.steamos-manager ];
 
       systemd.packages = [ pkgs.gamescope-session pkgs.steamos-manager ];
 
