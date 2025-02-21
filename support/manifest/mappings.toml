@@ -125,7 +125,7 @@ holo-nix-offload.ignore = true
 holo-rust-packaging-tools.ignore = true
 
 # applied as NixOS config
-holo-zram-swap.check = "0.2-0"
+holo-zram-swap.check = "0.3-0"
 
 # FIXME: IME stuff
 ibus-anthy.ignore = true
@@ -175,6 +175,9 @@ libevdi.ignore = true
 
 # some internal tooling, not shipped
 libversion.ignore = true
+
+# packaging changes
+libxml2.ignore = true
 
 linux-firmware-neptune = { map = "linux-firmware-jupiter", pkgrel = 1 }
 
@@ -293,8 +296,8 @@ steamos-atomupd-client.ignore = true
 
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
-steamos-customizations-git.check = "20250217.1-1"
-steamos-customizations-jupiter.check = "20250217.1-1"
+steamos-customizations-git.check = "20250219.1-1"
+steamos-customizations-jupiter.check = "20250219.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
