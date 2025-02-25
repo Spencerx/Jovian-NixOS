@@ -201,7 +201,7 @@ linux-neptune-rtw-debug.ignore = true
 linux-neptune-68.ignore = true
 
 # new kernel
-linux-neptune-611 = { map = "linux_jovian", pkgrel = 1 }
+linux-neptune-611 = { map = "linux_jovian", pkgrel = 3 }
 
 # we don't identify as SteamOS
 lsb-release.ignore = true
@@ -250,8 +250,8 @@ plymouth.check = "22.02.122-1.6"
 # packaging changes only, will probably not be relevant ever
 podman.ignore = true
 
-# we're tracking our fork but want to merge stuff into it
-powerbuttond.check = "2-2"
+# renamed to steamos-powerbuttond
+powerbuttond.ignore = true
 
 # some internal tooling, not shipped
 python-libversion.ignore = true
@@ -318,6 +318,8 @@ steamos-media-creation-git.ignore = true
 # Allows switching between iwd and wpa_supplicant wifi backends from Steam
 # FIXME: doesn't seem to be wired up?
 steamos-networking-tools.check = "1.2-1"
+
+steamos-powerbuttond.map = "powerbuttond"
 
 # more A/B stuff
 steamos-repair-backend-git.ignore = true
