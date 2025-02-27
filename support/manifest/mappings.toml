@@ -359,5 +359,9 @@ wireplumber = { map = "wireplumber-jupiter", pkgrel = "1.4" }
 # ours is newer
 xdg-desktop-portal-gtk.ignore = true
 
+# packaging changes
+xorg-server.ignore = true
+xorg-xwayland.ignore = true
+
 # Arch packaging fix, we don't care
 zenity-gtk3.check = "3.44.2-3"
