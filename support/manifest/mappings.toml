@@ -128,6 +128,7 @@ holo-rust-packaging-tools.ignore = true
 holo-zram-swap.check = "0.3-0"
 
 # FIXME: IME stuff
+ibus.ignore = true
 ibus-anthy.ignore = true
 ibus-pinyin.ignore = true
 ibus-table-cangjie-lite.ignore = true
@@ -147,7 +148,7 @@ jupiter-firewall.ignore = true
 
 jupiter-hw-support = { map = ["jupiter-hw-support", "steamdeck-hw-theme", "steamdeck-firmware", "steamos-polkit-helpers"], pkgrel = 2 }
 
-jupiter-legacy-support.check = "1.152-1"
+jupiter-legacy-support.check = "1.153-1"
 
 # devkit stuff
 jupiter-resolved-nomdns.ignore = true
@@ -271,7 +272,7 @@ renderdoc-minimal.ignore = true
 rtl88x2ce-dkms.ignore = true
 
 # not used yet
-scx-scheds.check = "1.0.9.linux.neptune.611-1"
+scx-scheds.check = "1.0.10.linux.neptune.611-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
