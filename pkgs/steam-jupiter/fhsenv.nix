@@ -2,6 +2,7 @@
 # dependencies of the Steam Deck UI
 
 { writeShellScriptBin
+, dmidecode
 , jovian-stubs
 , steam
   # , steamos-polkit-helpers
@@ -13,6 +14,7 @@ let
     "lib"
     "runCommand"
     "writeShellScriptBin"
+    "dmidecode"
     "jovian-stubs"
     "steam"
     "steamos-polkit-helpers"
@@ -43,6 +45,7 @@ let
 
   wrappedSteam = steam.override (extraArgs // {
     extraPkgs = pkgs: (if args ? extraPkgs then args.extraPkgs pkgs else [ ]) ++ [
+      dmidecode
       jovian-stubs
       sessionSwitcher
 
