@@ -94,6 +94,18 @@ in
         pkgs.powerbuttond
       ];
 
+      # From steam-jupiter
+      services.udev.extraRules = ''
+        # USB devices and topological children
+        SUBSYSTEMS=="usb", TAG+="uaccess"
+
+        # HID devices over hidraw
+        KERNEL=="hidraw*", TAG+="uaccess"
+
+        # Steam Controller udev write access
+        KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
+      '';
+
       # This rule allows the user to configure Wi-Fi in Deck UI.
       #
       # Steam modifies the system network configs via
