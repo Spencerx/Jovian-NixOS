@@ -167,7 +167,7 @@ kdumpst.ignore = true
 kmod.check = "33-3.2"
 
 # special hack to allow Steam input without a prompt, can be done better in 6.3
-kwin.check = "6.2.5-1.1"
+kwin.check = "6.2.5-1.2"
 
 libdrm = { map = true, pkgrel = 1 }
 
