@@ -32,7 +32,7 @@ alsa-ucm-conf.check = "1.2.12-1.1"
 atomupd-daemon.ignore = true
 
 # FIXME: has some not-yet-upstream patches, maybe we want them in nixpkgs?
-bluez.check = "5.79-1.8"
+bluez.check = "5.79-1.9"
 
 # more A/B stuff
 bmap-tools.ignore = true
@@ -240,7 +240,7 @@ pipewire.check = "1:1.2.7-1.1"
 
 # builds from master branch for Qt6
 # FIXME: do we want this?
-plasma-remotecontrollers.check = "5.26.90.r256.g8daeecc-1"
+plasma-remotecontrollers.check = "5.26.90.r258.g9ace9a9-1"
 
 # packaging changes for SteamOS A/B
 plasma-workspace.check = "6.2.5-1.2"
@@ -298,7 +298,7 @@ steamos-atomupd-client.ignore = true
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
 steamos-customizations-git.check = "20250219.1-1"
-steamos-customizations-jupiter.check = "20250219.1-1"
+steamos-customizations-jupiter.check = "20250310.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
