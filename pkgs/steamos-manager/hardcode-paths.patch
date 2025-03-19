@@ -38,18 +38,18 @@ index 4278ee7..59fdc38 100644
  device_flag = "--device"
  no_validate_flag = "--skip-validation"
 diff --git a/data/system/com.steampowered.SteamOSManager1.service b/data/system/com.steampowered.SteamOSManager1.service
-index 792ea8d..0088dc3 100644
+index 792ea8d..68d5183 100644
 --- a/data/system/com.steampowered.SteamOSManager1.service
 +++ b/data/system/com.steampowered.SteamOSManager1.service
 @@ -1,5 +1,5 @@
  [D-BUS Service]
  Name=com.steampowered.SteamOSManager1
 -Exec=/usr/lib/steamos-manager -r
-+Exec=@out@/lib/steamos-manager -r
++Exec=@out@/bin/steamos-manager -r
  User=root
  SystemdService=steamos-manager.service
 diff --git a/data/system/steamos-manager.service b/data/system/steamos-manager.service
-index 1e21630..fda4ee6 100644
+index 1e21630..111630e 100644
 --- a/data/system/steamos-manager.service
 +++ b/data/system/steamos-manager.service
 @@ -7,7 +7,7 @@ After=steamos-log-submitter.service
@@ -57,24 +57,24 @@ index 1e21630..fda4ee6 100644
  BusName=com.steampowered.SteamOSManager1
  Environment=RUST_LOG='INFO'
 -ExecStart=/usr/lib/steamos-manager -r
-+ExecStart=@out@/lib/steamos-manager -r
++ExecStart=@out@/bin/steamos-manager -r
  Restart=on-failure
  RestartSec=1
  
 diff --git a/data/user/com.steampowered.SteamOSManager1.service b/data/user/com.steampowered.SteamOSManager1.service
-index fccfb36..f6a0d20 100644
+index fccfb36..e563b8a 100644
 --- a/data/user/com.steampowered.SteamOSManager1.service
 +++ b/data/user/com.steampowered.SteamOSManager1.service
 @@ -1,6 +1,6 @@
  [D-BUS Service]
  Name=com.steampowered.SteamOSManager1
 -Exec=/usr/lib/steamos-manager
-+Exec=@out@/lib/steamos-manager
++Exec=@out@/bin/steamos-manager
  User=root
  SystemdService=steamos-manager.service
  
 diff --git a/data/user/steamos-manager.service b/data/user/steamos-manager.service
-index c147e40..d32e118 100644
+index c147e40..d97c77e 100644
 --- a/data/user/steamos-manager.service
 +++ b/data/user/steamos-manager.service
 @@ -6,6 +6,6 @@ After=gamescope.service
@@ -82,7 +82,7 @@ index c147e40..d32e118 100644
  BusName=com.steampowered.SteamOSManager1
  Environment=RUST_LOG='INFO'
 -ExecStart=/usr/lib/steamos-manager
-+ExecStart=@out@/lib/steamos-manager
++ExecStart=@out@/bin/steamos-manager
  Restart=on-failure
  RestartSec=1
 diff --git a/src/daemon/root.rs b/src/daemon/root.rs
