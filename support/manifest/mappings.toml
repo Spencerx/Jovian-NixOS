@@ -148,7 +148,7 @@ jupiter-firewall.ignore = true
 
 jupiter-hw-support = { map = ["jupiter-hw-support", "steamdeck-hw-theme", "steamdeck-firmware", "steamos-polkit-helpers"], pkgrel = 2 }
 
-jupiter-legacy-support.check = "1.153-1"
+jupiter-legacy-support.check = "1.154-1"
 
 # devkit stuff
 jupiter-resolved-nomdns.ignore = true
