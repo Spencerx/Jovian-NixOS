@@ -58,7 +58,10 @@ python3.pkgs.buildPythonPackage rec {
     "--prefix PATH : ${lib.makeBinPath [ coreutils psmisc ]}"
   ];
 
-  pythonRelaxDeps = [ "watchdog" ];
+  pythonRelaxDeps = [
+    "aiohttp-cors"
+    "watchdog"
+  ];
 
   passthru.python = python3;
 
