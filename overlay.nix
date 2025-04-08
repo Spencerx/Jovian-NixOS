@@ -31,6 +31,10 @@ rec {
   };
   gamescope-session = final.callPackage ./pkgs/gamescope-session { };
 
+  mangohud = final.callPackage ./pkgs/mangohud {
+    mangohud' = prev.mangohud;
+  };
+
   mesa-radeonsi-jupiter = final.callPackage ./pkgs/mesa-radeonsi-jupiter {};
   mesa-radv-jupiter = final.callPackage ./pkgs/mesa-radv-jupiter {};
 

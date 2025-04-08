@@ -210,8 +210,7 @@ lsb-release.ignore = true
 # packaging changes, removes a heavy dependency
 maliit-keyboard.check = "2.3.1-4.1"
 
-# nixpkgs is ahead currently
-mangohud.check = "0.7.2.rc3.r11.g31f2ca5-2.3"
+mangohud.check = "0.8.1.r30.g07a04a2-1"
 
 # we take upstream patches and apply on top of our mesa
 mesa.check = "24.3.4.197725.radeonsi_24.3.4-2"
