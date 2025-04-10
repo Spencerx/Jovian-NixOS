@@ -100,6 +100,9 @@ buildLinux (args // rec {
     # Enable support for AMDGPU color calibration features
     DRM_AMD_COLOR_STEAMDECK = yes;
 
+    LENOVO_WMI_GAMEZONE = module;
+    LENOVO_WMI_TUNING = module;
+
     # PARAVIRT options have overhead, even on bare metal boots. They can cause
     # spinlocks to not be inlined as well. Either way, we don't intend to run this
     # kernel as a guest, so this also clears out a whole bunch of
