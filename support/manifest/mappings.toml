@@ -233,6 +233,9 @@ networkmanager.check = "1.50.1-1.2"
 pacman-contrib.ignore = true
 paru.ignore = true
 
+# Security backports
+perl.ignore = true
+
 # we ship a newer version, but patches may be valuable
 pipewire.check = "1:1.2.7-1.1"
 
