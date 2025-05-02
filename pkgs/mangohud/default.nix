@@ -1,11 +1,11 @@
 { mangohud', fetchFromGitHub }:
 mangohud'.overrideAttrs {
-  version = "0.8.1.r40";
+  version = "0.8.1.r49";
 
   src = fetchFromGitHub {
     owner = "flightlessmango";
     repo = "mangohud";
-    rev = "6ca95df5f8a687f5fca3fa5a707cc758ffdf8cf8";
-    hash = "sha256-9dsEeD0hcNHBMqRWi7Ek7zxsZrsbaTgPg/HNCxeOAQ0=";
+    rev = "a113f7cf4d1af688301043a4c70ee43098bc9e15";
+    hash = "sha256-KQFU9XVuRnS6IynFgDqzCqcnd741fjQ3d9wA97STkQ4=";
   };
 }
