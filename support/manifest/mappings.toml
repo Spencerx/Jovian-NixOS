@@ -209,7 +209,7 @@ lsb-release.ignore = true
 # packaging changes, removes a heavy dependency
 maliit-keyboard.check = "2.3.1-4.1"
 
-mangohud.check = "0.8.1.r40.g6ca95df-1"
+mangohud.check = "0.8.1.r49.ga113f7c-1"
 
 # we take upstream patches and apply on top of our mesa
 mesa.check = "24.3.4.197725.radeonsi_24.3.4-2"
