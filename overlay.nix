@@ -21,8 +21,11 @@ rec {
 
   galileo-mura = final.callPackage ./pkgs/galileo-mura { };
 
-  gamescope = final.callPackage ./pkgs/gamescope {
+  # This can't be callPackage, because it breaks the arguments
+  # being passed in to `override`.
+  gamescope = import ./pkgs/gamescope {
     gamescope' = prev.gamescope;
+    inherit (final) lib fetchFromGitHub fetchpatch;
   };
   gamescope-wsi = gamescope.override {
     enableExecutable = false;
