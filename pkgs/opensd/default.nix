@@ -1,7 +1,8 @@
-{ stdenv
-, lib
-, fetchFromGitea
-, cmake
+{
+  stdenv,
+  lib,
+  fetchFromGitea,
+  cmake,
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "opensd";
@@ -16,7 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [];
+  buildInputs = [ ];
 
   cmakeFlags = [
     "-DUDEV_RULE_DIR=${placeholder "out"}/lib/udev/rules.d"
