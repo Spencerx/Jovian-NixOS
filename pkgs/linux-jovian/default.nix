@@ -102,9 +102,12 @@ buildLinux (args // rec {
 
     LENOVO_WMI_GAMEZONE = module;
     LENOVO_WMI_TUNING = module;
+    LENOVO_LEGOS_HID = module;
 
     ZOTAC_ZONE_HID = module;
     ZOTAC_ZONE_PLATFORM = module;
+
+    ASUS_ALLY_HID = module;
 
     # PARAVIRT options have overhead, even on bare metal boots. They can cause
     # spinlocks to not be inlined as well. Either way, we don't intend to run this
