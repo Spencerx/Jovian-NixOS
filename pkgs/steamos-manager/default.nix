@@ -15,17 +15,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "steamos-manager";
-  version = "25.4.1";
+  version = "25.5.1";
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "steamos-manager";
     rev = "v${version}";
-    hash = "sha256-tJKqJqwfjkGfpuFF3mQ20r9iF/4Bz+EmxYY2FPdtnKI=";
+    hash = "sha256-agIo9XxrFjrG6hsezaAYx2v4BtfX1Nzmm5FcBXAnTGA=";
   };
 
-  useFetchCargoVendor = true;
-  cargoHash = "sha256-8DX9Ix81nmH55pqGz3WdnwysJpSq+lpZRUYkuOM7jHo=";
+  cargoHash = "sha256-F0KhdviwpoNqygoUqqb/f7oKgB7vADsqPztAoyZie6k=";
 
   # tests assume Steam Deck hardware and FHS paths
   doCheck = false;
@@ -58,20 +57,13 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ udev ];
 
-  postInstall = ''
-    install -d -m0755 "$out/share/dbus-1/services/"
-    install -d -m0755 "$out/share/dbus-1/system-services/"
-    install -d -m0755 "$out/share/dbus-1/system.d/"
-    install -d -m0755 "$out/lib/systemd/system/"
-    install -d -m0755 "$out/lib/systemd/user/"
+  installPhase = ''
+    runHook preInstall
 
-  	install -D -m644 -t "$out/share/steamos-manager/platforms" "data/platforms/"*
+    make DESTDIR=$out install
+    mv $out/usr/* $out/
+    rm -r $out/usr/
 
-    install -m644 "data/system/com.steampowered.SteamOSManager1.service" "$out/share/dbus-1/system-services/"
-    install -m644 "data/system/com.steampowered.SteamOSManager1.conf" "$out/share/dbus-1/system.d/"
-    install -m644 "data/system/steamos-manager.service" "$out/lib/systemd/system/"
-
-    install -m644 "data/user/com.steampowered.SteamOSManager1.service" "$out/share/dbus-1/services/"
-    install -m644 "data/user/steamos-manager.service" "$out/lib/systemd/user/"
+    runHook postInstall
   '';
 }

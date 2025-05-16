@@ -45,7 +45,7 @@ index 792ea8d..68d5183 100644
  [D-BUS Service]
  Name=com.steampowered.SteamOSManager1
 -Exec=/usr/lib/steamos-manager -r
-+Exec=@out@/bin/steamos-manager -r
++Exec=@out@/lib/steamos-manager -r
  User=root
  SystemdService=steamos-manager.service
 diff --git a/data/system/steamos-manager.service b/data/system/steamos-manager.service
@@ -57,7 +57,7 @@ index 1e21630..111630e 100644
  BusName=com.steampowered.SteamOSManager1
  Environment=RUST_LOG='INFO'
 -ExecStart=/usr/lib/steamos-manager -r
-+ExecStart=@out@/bin/steamos-manager -r
++ExecStart=@out@/lib/steamos-manager -r
  Restart=on-failure
  RestartSec=1
  
@@ -69,7 +69,7 @@ index fccfb36..e563b8a 100644
  [D-BUS Service]
  Name=com.steampowered.SteamOSManager1
 -Exec=/usr/lib/steamos-manager
-+Exec=@out@/bin/steamos-manager
++Exec=@out@/lib/steamos-manager
  User=root
  SystemdService=steamos-manager.service
  
@@ -82,7 +82,7 @@ index c147e40..d97c77e 100644
  BusName=com.steampowered.SteamOSManager1
  Environment=RUST_LOG='INFO'
 -ExecStart=/usr/lib/steamos-manager
-+ExecStart=@out@/bin/steamos-manager
++ExecStart=@out@/lib/steamos-manager
  Restart=on-failure
  RestartSec=1
 diff --git a/src/daemon/root.rs b/src/daemon/root.rs
