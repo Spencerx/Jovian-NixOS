@@ -25,7 +25,7 @@ rec {
   # being passed in to `override`.
   gamescope = import ./pkgs/gamescope {
     gamescope' = prev.gamescope;
-    inherit (final) lib fetchFromGitHub fetchpatch;
+    inherit (final) fetchFromGitHub;
   };
   gamescope-wsi = gamescope.override {
     enableExecutable = false;
