@@ -275,6 +275,9 @@ renderdoc-minimal.ignore = true
 # unused
 rtl88x2ce-dkms.ignore = true
 
+# backport
+rust.ignore = true
+
 # not used yet
 scx-scheds.check = "1.0.12.linux.neptune.611-1"
 
