@@ -168,7 +168,7 @@ kmod.check = "33-3.2"
 # special hack to allow Steam input without a prompt, can be done better in 6.3
 kwin.check = "6.2.5-1.2"
 
-libdrm = { map = true, pkgrel = 1 }
+libdrm.check = "2.4.123-1"
 
 # DisplayLink stuff
 libevdi.ignore = true
@@ -284,7 +284,7 @@ scx-scheds.check = "1.0.12.linux.neptune.611-1"
 # FIXME: package this
 steam-im-modules.ignore = true
 
-steam-jupiter-stable.map = "steam-unwrapped"
+steam-jupiter-stable = { map = "steam-unwrapped", attr = "bootstrapVersion" }
 
 # we don't use this
 steam-jupiter-oobe.ignore = true
