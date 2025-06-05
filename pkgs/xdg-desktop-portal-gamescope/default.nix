@@ -13,13 +13,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "xdg-desktop-portal-gamescope";
-  version = "0.1.19.89fcd9a";
+  version = "0.1.20.c54d973";
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "xdg-desktop-portal-gamescope";
-    rev = "89fcd9adc577c95de61bac7c7b7e4a2559d74bd3";
-    hash = "sha256-wqZnmjz4xIGNOvK7CfQJq2Q2lxmh1PzuOTRBr4b23Xs=";
+    rev = "c54d9735bed8c35f1d507fc1176fd01cd8b2416f";
+    hash = "sha256-6uuayxq/bZDaCBDeEcKbHQgDwwOTMgpW8chepaHi80I=";
   };
 
   cargoDeps = rustPlatform.fetchCargoVendor {
