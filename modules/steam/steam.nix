@@ -84,6 +84,9 @@ in
           # .../lib/hwsupport/format-device.sh makes an unqualified `umount` call.
           "/run/wrappers/"
         ];
+
+        # https://gitlab.steamos.cloud/holo/steamos-manager/-/issues/1
+        wantedBy = [ "multi-user.target" ];
       };
 
       services.dbus.packages = [ pkgs.steamos-manager ];
