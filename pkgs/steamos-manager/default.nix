@@ -1,6 +1,6 @@
 {
   rustPlatform,
-  fetchFromGitHub,
+  fetchFromGitLab,
   replaceVars,
   jupiter-hw-support,
   jovian-stubs,
@@ -19,16 +19,17 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "steamos-manager";
-  version = "25.5.5";
+  version = "25.6.0";
 
-  src = fetchFromGitHub {
-    owner = "Jovian-Experiments";
+  src = fetchFromGitLab {
+    domain = "gitlab.steamos.cloud";
+    owner = "holo";
     repo = "steamos-manager";
     rev = "v${version}";
-    hash = "sha256-Sn2AJOtBIH0hFFuhfSVeMryn5gmh0N92izDFifeKb38=";
+    hash = "sha256-RhbiNfHtRag3la8luWbOtE9LHBGxdu4YDtljqcWMpEo=";
   };
 
-  cargoHash = "sha256-J5JqaZg9NsCJnEHfUQwncYIabtVzMKm2/yyxDmvhpUo=";
+  cargoHash = "sha256-v0wj76aJF29Yf6BN83yKN5Oe5Cq1FWCWHCksEm+XdEw=";
 
   # tests assume Steam Deck hardware and FHS paths
   doCheck = false;
@@ -54,6 +55,7 @@ rustPlatform.buildRustPackage rec {
   postPatch = ''
     substituteInPlace \
       src/daemon/{root,user}.rs \
+      src/hardware.rs \
       src/platform.rs \
       data/*/*.service \
       --replace-warn "@out@" "$out"
@@ -79,14 +81,16 @@ rustPlatform.buildRustPackage rec {
     mv $out/bin/steamos-manager $out/lib/steamos-manager
 
     # copied from vendor makefile, s@$(DESTDIR)/usr@$out@g
-    install -D -m644 -t "$out/share/steamos-manager/platforms" "data/platforms/"*
-    install -D -m644 LICENSE "$out/share/licenses/steamos-manager/LICENSE"
-
     install -d -m0755 "$out/share/dbus-1/services/"
     install -d -m0755 "$out/share/dbus-1/system-services/"
     install -d -m0755 "$out/share/dbus-1/system.d/"
     install -d -m0755 "$out/lib/systemd/system/"
     install -d -m0755 "$out/lib/systemd/user/"
+
+    install -D -m644 -t "$out/share/steamos-manager/devices" "data/devices/"*
+    install -D -m644 LICENSE "$out/share/licenses/steamos-manager/LICENSE"
+
+    install -m644 "data/platform.toml" "$out/share/steamos-manager/"
 
     install -m644 "data/system/com.steampowered.SteamOSManager1.service" "$out/share/dbus-1/system-services/"
     install -m644 "data/system/com.steampowered.SteamOSManager1.conf" "$out/share/dbus-1/system.d/"

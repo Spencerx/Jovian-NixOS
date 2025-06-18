@@ -1,7 +1,7 @@
-diff --git a/data/platforms/jupiter.toml b/data/platforms/jupiter.toml
-index 881ebb8..c8b7871 100644
---- a/data/platforms/jupiter.toml
-+++ b/data/platforms/jupiter.toml
+diff --git a/data/platform.toml b/data/platform.toml
+index ddab3e5..404d8fa 100644
+--- a/data/platform.toml
++++ b/data/platform.toml
 @@ -1,27 +1,27 @@
  [factory_reset.all]
 -script  = "/usr/bin/steamos-reset-tool"
@@ -88,10 +88,10 @@ index a378a66..ebe7313 100644
  Restart=on-failure
  EnvironmentFile=%t/gamescope-environment
 diff --git a/data/user/steamos-manager.service b/data/user/steamos-manager.service
-index c147e40..d32e118 100644
+index de25c51..8d4f397 100644
 --- a/data/user/steamos-manager.service
 +++ b/data/user/steamos-manager.service
-@@ -6,6 +6,6 @@ After=gamescope.service
+@@ -6,7 +6,7 @@ After=gamescope.service
  Type=dbus
  BusName=com.steampowered.SteamOSManager1
  Environment=RUST_LOG='INFO'
@@ -99,6 +99,7 @@ index c147e40..d32e118 100644
 +ExecStart=@out@/lib/steamos-manager
  Restart=on-failure
  RestartSec=1
+ EnvironmentFile=%t/gamescope-environment
 diff --git a/src/daemon/root.rs b/src/daemon/root.rs
 index e0204a8..82946bd 100644
 --- a/src/daemon/root.rs
@@ -113,7 +114,7 @@ index e0204a8..82946bd 100644
  
      fn state(&self) -> RootState {
 diff --git a/src/daemon/user.rs b/src/daemon/user.rs
-index c5db378..502db4f 100644
+index 80fd3d1..0f3683f 100644
 --- a/src/daemon/user.rs
 +++ b/src/daemon/user.rs
 @@ -67,7 +67,7 @@ impl DaemonContext for UserContext {
@@ -125,11 +126,24 @@ index c5db378..502db4f 100644
      }
  
      fn state(&self) -> UserState {
+diff --git a/src/hardware.rs b/src/hardware.rs
+index 661984a..ffc028f 100644
+--- a/src/hardware.rs
++++ b/src/hardware.rs
+@@ -31,7 +31,7 @@ const SYS_VENDOR_PATH: &str = "/sys/class/dmi/id/sys_vendor";
+ const BOARD_NAME_PATH: &str = "/sys/class/dmi/id/board_name";
+ const PRODUCT_NAME_PATH: &str = "/sys/class/dmi/id/product_name";
+ #[cfg(not(test))]
+-const DEVICE_CONFIG_PATH: &str = "/usr/share/steamos-manager/devices";
++const DEVICE_CONFIG_PATH: &str = "@out@/share/steamos-manager/devices";
+ #[cfg(test)]
+ const DEVICE_CONFIG_PATH: &str = "data/devices";
+ 
 diff --git a/src/manager/root.rs b/src/manager/root.rs
-index 9971811..ea0ac99 100644
+index 88ad1c7..de613e3 100644
 --- a/src/manager/root.rs
 +++ b/src/manager/root.rs
-@@ -172,7 +172,7 @@ impl SteamOSManager {
+@@ -173,7 +173,7 @@ impl SteamOSManager {
          };
          for index in indices {
              let result = script_output(
@@ -139,18 +153,18 @@ index 9971811..ea0ac99 100644
              )
              .await;
 diff --git a/src/platform.rs b/src/platform.rs
-index ad24c78..29fc4ef 100644
+index cc4f897..040a3ed 100644
 --- a/src/platform.rs
 +++ b/src/platform.rs
-@@ -173,7 +173,7 @@ impl PlatformConfig {
-             _ => return Ok(None),
-         };
-         let config = read_to_string(format!(
--            "/usr/share/steamos-manager/platforms/{platform}.toml"
-+            "@out@/share/steamos-manager/platforms/{platform}.toml"
-         ))
-         .await?;
+@@ -173,7 +173,7 @@ impl FormatDeviceConfig {
+ impl PlatformConfig {
+     #[cfg(not(test))]
+     async fn load() -> Result<Option<PlatformConfig>> {
+-        let config = read_to_string("/usr/share/steamos-manager/platform.toml").await?;
++        let config = read_to_string("@out@/share/steamos-manager/platform.toml").await?;
          Ok(Some(toml::from_str(config.as_ref())?))
+     }
+ 
 diff --git a/src/wifi.rs b/src/wifi.rs
 index 679b06f..e5041cc 100644
 --- a/src/wifi.rs
