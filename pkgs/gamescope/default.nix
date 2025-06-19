@@ -7,16 +7,17 @@
 #       version shipped by the vendor, ensuring feature level is equivalent.
 
 gamescope'.overrideAttrs(old: rec {
-  version = "3.16.13";
+  version = "3.16.14";
 
   src = fetchFromGitHub {
     owner = "ValveSoftware";
     repo = "gamescope";
     rev = version;
     fetchSubmodules = true;
-    hash = "sha256-P+paY8lE1twRet/WS8acqtI39vHN0ebZJA9EredcMpQ=";
+    hash = "sha256-i1a3nTospbGR/uPbwuM0z6cATANvw3QCFXd99e3tXCs=";
   };
 
+  # FIXME: remove after nixpkgs updates
   postPatch = ''
     patchShebangs default_extras_install.sh
   '';
