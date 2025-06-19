@@ -374,7 +374,7 @@ wakehook = { map = true, pkgrel = 1 }
 # backport
 wayland-protocols.check = "1.44-1"
 
-wireplumber = { map = "wireplumber-jupiter", pkgrel = "1.2" }
+wireplumber = { map = "wireplumber-jupiter", pkgrel = "1.3" }
 
 xdg-desktop-portal-gamescope = { map = true, pkgrel = 1 }
 xdg-desktop-portal-holo = { map = true, pkgrel = 1 }
