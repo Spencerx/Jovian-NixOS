@@ -225,9 +225,6 @@ mesa.check = "24.3.4.197725.radeonsi_24.3.4-3"
 
 mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "1", fixup = "mesa" }
 
-# some old test thing
-mesa-unstable.ignore = true
-
 # FIXME: ???
 mpg123.check = "1.32.9-1"
 
@@ -292,6 +289,9 @@ rust.ignore = true
 
 # not used yet
 scx-scheds.check = "1.0.13.linux.neptune.611-1"
+
+# backport
+speech-dispatcher.ignore = true
 
 # FIXME: package this
 steam-im-modules.ignore = true
