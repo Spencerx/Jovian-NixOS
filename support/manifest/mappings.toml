@@ -352,6 +352,9 @@ steamos-systemreport.ignore = true
 # applied as NixOS config
 steamos-tweak-mtu-probing.check = "1-1"
 
+# security backport
+sudo.check = "1.9.17.p1-1.1"
+
 # SteamOS A/B specific patch
 systemd.check = "257.2-1.1"
 
