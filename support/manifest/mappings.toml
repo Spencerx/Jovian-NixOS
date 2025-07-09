@@ -188,7 +188,7 @@ libversion.ignore = true
 # packaging changes
 libxml2.ignore = true
 
-linux-firmware-neptune = { map = "linux-firmware-jupiter", pkgrel = 2 }
+linux-firmware-neptune = { map = "linux-firmware-jupiter", pkgrel = 1 }
 
 # some other mainline kernel build
 linux-lts.ignore = true
