@@ -248,7 +248,7 @@ paru.ignore = true
 perl.ignore = true
 
 # we ship a newer version, but patches may be valuable
-pipewire.check = "1:1.2.7-1.1"
+pipewire.check = "1:1.2.7-1.2"
 
 # builds from master branch for Qt6
 # FIXME: do we want this?
@@ -290,7 +290,7 @@ rtl88x2ce-dkms.ignore = true
 rust.ignore = true
 
 # not used yet
-scx-scheds.check = "1.0.13.linux.neptune.611-1"
+scx-scheds.check = "1.0.14.linux.neptune.611-1"
 
 # backport
 speech-dispatcher.ignore = true
