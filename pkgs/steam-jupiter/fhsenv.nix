@@ -5,7 +5,12 @@
 , dmidecode
 , jovian-stubs
 , steam
-  # , steamos-polkit-helpers
+
+# We need to add this flag when Steam is started directly (e.g., desktop mode)
+# so we have the correct client version. This is important even for desktop
+# use because only the Steam Deck branch of the client has the new on-screen
+# keyboard that's summoned with STEAM + X.
+, platformArgs ? "-steamos3 -steampal -steamdeck"
 , ...
 } @ args:
 
@@ -16,6 +21,7 @@ let
     "writeShellScriptBin"
     "dmidecode"
     "jovian-stubs"
+    "platformArgs"
     "steam"
     "steamos-polkit-helpers"
   ];
@@ -61,11 +67,7 @@ let
       "--bind /tmp /tmp"
     ];
 
-    # We need to add this flag when Steam is started directly (e.g., desktop mode)
-    # so we have the correct client version. This is important even for desktop
-    # use because only the Steam Deck branch of the client has the new on-screen
-    # keyboard that's summoned with STEAM + X.
-    extraArgs = (args.extraArgs or "") + " -steamdeck";
+    extraArgs = (args.extraArgs or "") + " " + platformArgs;
   });
 in
 wrappedSteam
