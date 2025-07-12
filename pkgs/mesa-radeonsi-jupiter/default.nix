@@ -14,6 +14,6 @@ mesa.overrideAttrs(old: {
   };
 
   mesonFlags = old.mesonFlags ++ [
-    "-D radeonsi-build-id=53d063d06f3d5b95f1ffc56a00972475e31e57ac"
+    "-Dradeonsi-build-id=53d063d06f3d5b95f1ffc56a00972475e31e57ac"
   ];
 })
