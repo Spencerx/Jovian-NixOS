@@ -18,6 +18,7 @@ python3.pkgs.buildPythonPackage rec {
   };
 
   pnpmDeps = pnpm_9.fetchDeps {
+    fetcherVersion = 1;
     inherit pname version src;
     sourceRoot = "${src.name}/frontend";
     hash = "sha256-MHSSzYhskoGJkLr1Bdpf4fxH4xX80etqn+Wy2XtEB88=";
