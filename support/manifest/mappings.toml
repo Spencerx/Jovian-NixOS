@@ -98,6 +98,9 @@ gamescope.map = ["gamescope", "gamescope-session"]
 # only there to split out locales
 glibc.check = "2.41+r47+g046b33800c3e-1"
 
+# security backports
+gnutls.check = "3.8.10-1.1"
+
 # FIXME: dev tool
 gpu-trace.ignore = true
 
@@ -320,7 +323,7 @@ steamos-atomupd-client.ignore = true
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
 steamos-customizations-git.check = "20250527.1-1"
-steamos-customizations-jupiter.check = "20250527.1-1"
+steamos-customizations-jupiter.check = "20250715.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
