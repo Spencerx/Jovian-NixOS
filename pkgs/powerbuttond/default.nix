@@ -10,13 +10,13 @@
 }:
 stdenv.mkDerivation(finalAttrs: {
   pname = "powerbuttond";
-  version = "3.2";
+  version = "3.3";
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "powerbuttond";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-BP5ZzoZmJbmeTkl44cg+/nLeLVicj+RhFGS56PDx5Xo=";
+    hash = "sha256-bXvDBkLVxygefEeNtZjeZIXyOMsnEYnXxqWVgRAEEqY=";
   };
 
   patches = [
