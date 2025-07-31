@@ -5,7 +5,7 @@ wireplumber'.overrideAttrs(_: {
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "wireplumber";
-    rev = "0.5.7-jupiter1.4";
-    hash = "sha256-gU+5CA7SqUTnevs2Xqfm2PCe9zxJXS8HG2y7JY6aBzY=";
+    rev = "0.5.7-jupiter1.6";
+    hash = "sha256-Cs/gzOfmxm4wDYrjLsO4KDjQ3zC9kc8g8wg0XZyqaaM=";
   };
 })
