@@ -3,9 +3,9 @@
 let
   inherit (lib) versions;
 
-  kernelVersion = "6.11.11";
-  vendorVersion = "valve22";
-  hash = "sha256-N9zFbG3nqlefb37jVw0P6uA+F2uqQ9ZA/Ki3D+4Mx1A=";
+  kernelVersion = "6.15.8";
+  vendorVersion = "valve1";
+  hash = "sha256-oZcPq1LM7cXWCcO1uGUe4RRKpv0G4JvFSBwTsWCslvk=";
 in
 buildLinux (args // rec {
   version = "${kernelVersion}-${vendorVersion}";
@@ -117,8 +117,9 @@ buildLinux (args // rec {
     # virtualization-specific drivers.
     HYPERVISOR_GUEST = lib.mkForce no;
 
-    # Jovian: we don't enable this before 6.12
-    # CONFIG_HAVE_RUST=n
+    # Disable some options enabled in ArchLinux 6.1.12-arch1 config
+    # Jovian: we do have Rust, and we can't lie about it
+    # HAVE_RUST = no;
   
     # This has been disabled upstream since 6.11.8-arch1
     # See: https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/commit/1a06ca984333093fb12cbbff275da31fa2bc5f6c
