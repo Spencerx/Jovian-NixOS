@@ -345,7 +345,7 @@ vpower.ignore = true
 
 wakehook = { map = true, pkgrel = 2 }
 
-wireplumber = { map = "wireplumber-jupiter", pkgrel = "1.6" }
+wireplumber = { map = "wireplumber-jupiter", pkgrel = "1.1" }
 
 xdg-desktop-portal-gamescope = { map = true, pkgrel = 2 }
 xdg-desktop-portal-holo = { map = true, pkgrel = 2 }
