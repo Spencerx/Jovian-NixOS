@@ -107,9 +107,9 @@ buildLinux (args // rec {
     ZOTAC_ZONE_HID = module;
     ZOTAC_ZONE_PLATFORM = module;
 
-    ASUS_ALLY_HID = module;
-    # Jovian: not actually present in-tree currently
-    # ASUS_ARMOURY = module;
+    # Jovian: renamed
+    HID_ASUS_ALLY = module;
+    ASUS_ARMOURY = module;
 
     # PARAVIRT options have overhead, even on bare metal boots. They can cause
     # spinlocks to not be inlined as well. Either way, we don't intend to run this
@@ -144,6 +144,11 @@ buildLinux (args // rec {
     # Disable call depth tracking speculative execution vulnerability mitigation
     # Jovian: renamed
     MITIGATION_CALL_DEPTH_TRACKING = no;
+
+    # Xbox GIP driver
+    JOYSTICK_XBOX_GIP = module;
+    JOYSTICK_XBOX_GIP_FF = yes;
+    JOYSTICK_XBOX_GIP_LEDS = yes;
 
     # Jovian: fix fallout from the vendor-set options
     DRM_AMD_DC_SI = lib.mkForce (option no);
