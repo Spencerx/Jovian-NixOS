@@ -25,6 +25,9 @@
 # that way.
 
 [packages]
+# rebuild
+7zip.ignore = true
+
 # we use our own upstream version
 alsa-ucm-conf.check = "1.2.14-2.1"
 
@@ -160,7 +163,7 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.1"
+kwin.check = "6.4.3-1.2"
 
 libdrm.check = "2.4.123-1.1"
 
@@ -195,7 +198,7 @@ linux-neptune-68.ignore = true
 linux-neptune-611.ignore = true
 
 # new kernel
-linux-neptune-615 = { map = "linux_jovian", pkgrel = 2 }
+linux-neptune-615 = { map = "linux_jovian", pkgrel = 1 }
 
 # we don't identify as SteamOS
 lsb-release.ignore = true
@@ -207,9 +210,6 @@ mangohud.check = "0.8.1.r49.ga113f7c-2"
 
 mesa = { map = "mesa-radeonsi-jupiter", pkgrel = "1.1", fixup = "mesa" }
 mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
-
-# some other old test thing
-neptune-ctl.ignore = true
 
 # we don't actually apply any of this, but it's worth checking
 # FIXME?
@@ -246,7 +246,6 @@ powerdevil.ignore = true
 
 # some internal tooling, not shipped
 python-libversion.ignore = true
-python-pylink-square.ignore = true
 
 # FIXME: more IME stuff
 pyzy.ignore = true
