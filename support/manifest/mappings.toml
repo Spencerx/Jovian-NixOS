@@ -62,7 +62,7 @@ debos.ignore = true
 desync.ignore = true
 
 # enables SteamOS A/B stuff
-discover.check = "6.4.3-1"
+discover.check = "6.4.3-1.1"
 
 # SteamOS disk encryption thing
 dirlock.ignore = true
@@ -198,7 +198,7 @@ linux-neptune-68.ignore = true
 linux-neptune-611.ignore = true
 
 # new kernel
-linux-neptune-615 = { map = "linux_jovian", pkgrel = 1 }
+linux-neptune-615 = { map = "linux_jovian", pkgrel = 2 }
 
 # we don't identify as SteamOS
 lsb-release.ignore = true
