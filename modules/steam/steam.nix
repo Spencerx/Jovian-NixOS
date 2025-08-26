@@ -94,9 +94,9 @@ in
       services.displayManager.sessionPackages = [ pkgs.gamescope-session ];
 
       # Conflicts with powerbuttond
-      services.logind.extraConfig = ''
-        HandlePowerKey=ignore
-      '';
+      services.logind.settings.Login = {
+        HandlePowerKey = "ignore";
+      };
 
       services.udev.packages = [
         pkgs.powerbuttond
