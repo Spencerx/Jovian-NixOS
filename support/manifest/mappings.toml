@@ -163,7 +163,8 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.3"
+kwin.check = "6.4.3-1.4"
+kwin-x11.check = "6.4.3-1.1"
 
 libdisplay-info.check = "0.3.0-1"
 
@@ -174,6 +175,9 @@ libevdi.ignore = true
 
 # some internal tooling, not shipped
 libversion.ignore = true
+
+# security backport
+libxml2.check = "2.14.5-1.1"
 
 linux-firmware-neptune = { map = "linux-firmware-jupiter", pkgrel = 2 }
 
@@ -329,6 +333,9 @@ systemd.check = "257.7-2.1"
 
 # lul
 ttf-twemoji-default.ignore = true
+
+# security backport
+udisks2.check = "2.10.1-6.1"
 
 # debug tool
 umr.ignore = true
