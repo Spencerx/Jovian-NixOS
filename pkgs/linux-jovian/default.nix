@@ -3,9 +3,9 @@
 let
   inherit (lib) versions;
 
-  kernelVersion = "6.15.11";
+  kernelVersion = "6.16.7";
   vendorVersion = "valve1";
-  hash = "sha256-hi+kMtQTxpRFuE3gxth4QlJb3AOqHVWbJaaA2MDYq1s=";
+  hash = "sha256-bMqtxQpDo0d9JzAyGUAuKSRezc/hNQg5eccJJ0cNfxY=";
 in
 buildLinux (args // rec {
   version = "${kernelVersion}-${vendorVersion}";
@@ -110,6 +110,7 @@ buildLinux (args // rec {
     # Jovian: renamed
     HID_ASUS_ALLY = module;
     ASUS_ARMOURY = module;
+    ASUS_WMI_DEPRECATED_ATTRS = yes;
 
     # PARAVIRT options have overhead, even on bare metal boots. They can cause
     # spinlocks to not be inlined as well. Either way, we don't intend to run this
@@ -137,6 +138,8 @@ buildLinux (args // rec {
 
     # Disable simple-framebuffer to fix logo regression
     SYSFB_SIMPLEFB = lib.mkForce no;
+    DRM_EFIDRM = no;
+    DRM_VESADRM = no;
 
     # Enable Extensible Scheduling Class
     SCHED_CLASS_EXT = yes;
