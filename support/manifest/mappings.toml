@@ -55,6 +55,9 @@ ckbcomp.ignore = true
 # just disables tests
 clang.check = "20.1.8-1.1"
 
+# rebuilds with no changes
+cups.ignore = true
+
 # unused
 debos.ignore = true
 
@@ -163,12 +166,15 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.4"
+kwin.check = "6.4.3-1.5"
 kwin-x11.check = "6.4.3-1.1"
 
 libdisplay-info.check = "0.3.0-1"
 
 libdrm.check = "2.4.123-1.1"
+
+# custom cursed patches
+libei.check = "1.4.1-3"
 
 # DisplayLink stuff
 libevdi.ignore = true
@@ -203,8 +209,11 @@ linux-neptune-68.ignore = true
 # old kernel
 linux-neptune-611.ignore = true
 
+# old kernel
+linux-neptune-615.ignore = true
+
 # new kernel
-linux-neptune-615 = { map = "linux_jovian", pkgrel = 1 }
+linux-neptune-616 = { map = "linux_jovian", pkgrel = 1 }
 
 # we don't identify as SteamOS
 lsb-release.ignore = true
@@ -212,7 +221,7 @@ lsb-release.ignore = true
 # packaging changes, removes a heavy dependency
 maliit-keyboard.check = "2.3.1-4.2"
 
-mangohud.check = "0.8.1.r49.ga113f7c-2"
+mangohud.check = "0.8.1.r103.g10479eb-1"
 
 mesa = { map = "mesa-radeonsi-jupiter", pkgrel = "1", fixup = "mesa" }
 mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
