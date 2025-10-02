@@ -4,7 +4,7 @@
 , boost
 , lv2
 , faust2lv2
-, rnnoise-plugin
+, noisetorch-ladspa
 , which
 , resholve
 , bash
@@ -31,13 +31,13 @@ let
   };
   self = stdenv.mkDerivation(finalAttrs: {
     pname = "steamdeck-dsp";
-    version = "0.69";
+    version = "0.71";
 
     src = fetchFromGitHub {
       owner = "Jovian-Experiments";
       repo = "steamdeck-dsp";
       rev = finalAttrs.version;
-      hash = "sha256-j/RIPox4ug11p2uKVkO59l2rT+i7C9xpDyut9p73mq4=";
+      hash = "sha256-Lofbhmvog0Waglcl2bxUsmLp3GrDBOhdVEjIn2FPmsA=";
     };
 
     nativeBuildInputs = [
@@ -50,8 +50,8 @@ let
         --replace-fail /usr/include/boost "${boost.dev}/include/boost" \
         --replace-fail /usr/include/lv2 "${lv2.dev}/include/lv2"
 
-      substituteInPlace pipewire-confs/hardware-profiles/*/pipewire.conf.d/filter-chain.conf \
-        --replace-fail "/usr/lib/ladspa/librnnoise_ladspa.so" "${rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so"
+      substituteInPlace pipewire-confs/hardware-profiles/*/filter-chain.conf.d/filter-chain.conf \
+        --replace-fail "/usr/lib/ladspa/rnnoise_ladspa.so" "${noisetorch-ladspa}/lib/ladspa/rnnoise_ladspa.so"
 
       substituteInPlace ucm2/conf.d/*/*.conf \
         --replace-warn "exec" "# exec"
@@ -75,6 +75,9 @@ let
 
       ${resholve.phraseSolution "pipewire-hwconfig" pipewire-hwconfig-solution}
       ${resholve.phraseSolution "wireplumber-hwconfig" wireplumber-hwconfig-solution}
+
+      # work around dead symlink
+      touch $out/share/pipewire/hardware-profiles/valve-jupiter/filter-chain.conf.d/filter-chain-sink.conf
 
       for pkg in pipewire wireplumber; do
         for i in $(find $out/share/$pkg/hardware-profiles/* -type f -printf "%P\n" | sort | uniq); do 

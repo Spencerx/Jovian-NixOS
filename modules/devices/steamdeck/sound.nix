@@ -45,35 +45,25 @@ in
 
     environment.variables = extraEnv;
 
+    systemd.packages = [ pkgs.steamdeck-dsp ];
+
     systemd.services.pipewire.environment = lib.mkIf systemWide extraEnv;
     systemd.user.services.pipewire.environment = lib.mkIf (!systemWide) extraEnv;
 
     systemd.services.wireplumber.environment = lib.mkIf systemWide extraEnv;
     systemd.user.services.wireplumber.environment = lib.mkIf (!systemWide) extraEnv;
 
-    # These are copied from upstream steamdeck-dsp because upstream
-    # has terrible systemd ordering.
     systemd.services.pipewire-sysconf = {
-      description = "Hardware Specific Pipewire Configuration";
-      unitConfig.ConditionPathIsDirectory = "/run";
-      before = ["multi-user.target"];
+      enable = true;
       wantedBy = ["multi-user.target"];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = "${pkgs.steamdeck-dsp}/share/pipewire/hardware-profiles/pipewire-hwconfig";
-      };
     };
     systemd.services.wireplumber-sysconf = {
-      description = "Hardware Specific Wireplumber Configuration";
-      unitConfig.ConditionPathIsDirectory = "/run";
-      before = ["multi-user.target"];
+      enable = true;
       wantedBy = ["multi-user.target"];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = "${pkgs.steamdeck-dsp}/share/wireplumber/hardware-profiles/wireplumber-hwconfig";
-      };
+    };
+    systemd.user.services.filter-chain = {
+      enable = true;
+      wantedBy = ["default.target"];
     };
   };
 }
