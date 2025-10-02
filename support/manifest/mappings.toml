@@ -230,6 +230,9 @@ mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
 # FIXME?
 networkmanager.check = "1.52.1-1.1"
 
+# just the ladspa plugin
+noisetorch.check = "0.12.2.r47.g6d895f3-1"
+
 # backport, we don't have bandwidth to deal with a11y right now :(
 orca.ignore = true
 

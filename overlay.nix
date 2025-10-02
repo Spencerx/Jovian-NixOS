@@ -46,6 +46,8 @@ rec {
   mesa-radeonsi-jupiter = final.callPackage ./pkgs/mesa-radeonsi-jupiter {};
   mesa-radv-jupiter = final.callPackage ./pkgs/mesa-radv-jupiter {};
 
+  noisetorch-ladspa = final.callPackage ./pkgs/noisetorch-ladspa {};
+
   jupiter-fan-control = final.callPackage ./pkgs/jupiter-fan-control { };
   powerbuttond = final.callPackage ./pkgs/powerbuttond { };
   steam_notif_daemon = final.callPackage ./pkgs/steam_notif_daemon { };
