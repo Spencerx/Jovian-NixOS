@@ -7,10 +7,13 @@
   steamos-polkit-helpers,
   steamdeck-firmware,
   jupiter-dock-updater-bin,
+  coreutils,
   iwd,
   trace-cmd,
   iw,
   orca,
+  pipewire,
+  wireplumber-jupiter,
   pkg-config,
   wrapGAppsNoGuiHook,
   glib,
@@ -20,17 +23,17 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "steamos-manager";
-  version = "25.7.0";
+  version = "25.9.0";
 
   src = fetchFromGitLab {
     domain = "gitlab.steamos.cloud";
     owner = "holo";
     repo = "steamos-manager";
     rev = "v${version}";
-    hash = "sha256-wM6+12HJleYOkBaWcTjj08Qs62Pof3CSm0Dl7tCf/1M=";
+    hash = "sha256-4VykLt/E7nkfcVrjZhtRBYnbPvTvhfElPI1izW7PbHM=";
   };
 
-  cargoHash = "sha256-J8RMiPWGDo7oOKWA3ql/D9d3jP4CVi/AJch9eio/prI=";
+  cargoHash = "sha256-yv/cL+HKYICSDBl1+dYbgbFXnlLa5/NEzsfBXcK2WrU=";
 
   # tests assume Steam Deck hardware and FHS paths
   doCheck = false;
@@ -43,10 +46,13 @@ rustPlatform.buildRustPackage rec {
       jupiterDockUpdaterBin = jupiter-dock-updater-bin;
       hwsupport = jupiter-hw-support;
       polkitHelpers = steamos-polkit-helpers;
+      coreutils = coreutils;
       iwd = iwd;
       traceCmd = trace-cmd;
       iw = iw;
       orca = orca;
+      pipewire = pipewire;
+      wireplumber = wireplumber-jupiter;
       out = null;
     })
     # FIXME: build steamos-log-submitter and reenable this maybe?

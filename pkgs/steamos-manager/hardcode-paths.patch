@@ -38,39 +38,38 @@ index ddab3e5..404d8fa 100644
  device_flag = "--device"
  no_validate_flag = "--skip-validation"
 diff --git a/data/system/com.steampowered.SteamOSManager1.service b/data/system/com.steampowered.SteamOSManager1.service
-index 792ea8d..0088dc3 100644
+index 5fcbc63..1dd1cc6 100644
 --- a/data/system/com.steampowered.SteamOSManager1.service
 +++ b/data/system/com.steampowered.SteamOSManager1.service
 @@ -1,5 +1,5 @@
  [D-BUS Service]
  Name=com.steampowered.SteamOSManager1
--Exec=/usr/lib/steamos-manager -r
-+Exec=@out@/lib/steamos-manager -r
+-Exec=/bin/false
++Exec=@coreutils@/bin/false
  User=root
  SystemdService=steamos-manager.service
 diff --git a/data/system/steamos-manager.service b/data/system/steamos-manager.service
-index 1e21630..fda4ee6 100644
+index e49ea15..845d3de 100644
 --- a/data/system/steamos-manager.service
 +++ b/data/system/steamos-manager.service
-@@ -7,7 +7,7 @@ After=steamos-log-submitter.service
- Type=dbus
+@@ -9,7 +9,7 @@ StartLimitBurst=5
+ Type=notify-reload
  BusName=com.steampowered.SteamOSManager1
- Environment=RUST_LOG='INFO'
+ Environment=RUST_LOG=info
 -ExecStart=/usr/lib/steamos-manager -r
 +ExecStart=@out@/lib/steamos-manager -r
  Restart=on-failure
  RestartSec=1
- 
+ RestartMaxDelaySec=10
 diff --git a/data/user/com.steampowered.SteamOSManager1.service b/data/user/com.steampowered.SteamOSManager1.service
-index fccfb36..f6a0d20 100644
+index ac590d7..96340ab 100644
 --- a/data/user/com.steampowered.SteamOSManager1.service
 +++ b/data/user/com.steampowered.SteamOSManager1.service
-@@ -1,6 +1,6 @@
+@@ -1,5 +1,5 @@
  [D-BUS Service]
  Name=com.steampowered.SteamOSManager1
--Exec=/usr/lib/steamos-manager
-+Exec=@out@/lib/steamos-manager
- User=root
+-Exec=/bin/false
++Exec=@coreutils@/bin/false
  SystemdService=steamos-manager.service
  
 diff --git a/data/user/orca.service b/data/user/orca.service
@@ -87,19 +86,66 @@ index a378a66..ebe7313 100644
 +ExecReload=@orca@/bin/orca --replace
  Restart=on-failure
  EnvironmentFile=%t/gamescope-environment
+diff --git a/data/user/steamos-manager-session-cleanup.service b/data/user/steamos-manager-session-cleanup.service
+index ba2b6d0..c847907 100644
+--- a/data/user/steamos-manager-session-cleanup.service
++++ b/data/user/steamos-manager-session-cleanup.service
+@@ -5,7 +5,7 @@ After=default.target steamos-manager.service
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/bin/steamosctl clean-temporary-sessions
++ExecStart=@out@/bin/steamosctl clean-temporary-sessions
+ 
+ [Install]
+ WantedBy=graphical-session.target
 diff --git a/data/user/steamos-manager.service b/data/user/steamos-manager.service
-index de25c51..8d4f397 100644
+index d830dca..685d082 100644
 --- a/data/user/steamos-manager.service
 +++ b/data/user/steamos-manager.service
-@@ -6,7 +6,7 @@ After=gamescope.service
- Type=dbus
+@@ -8,7 +8,7 @@ StartLimitBurst=5
+ Type=notify-reload
  BusName=com.steampowered.SteamOSManager1
- Environment=RUST_LOG='INFO'
+ Environment=RUST_LOG=info
 -ExecStart=/usr/lib/steamos-manager
 +ExecStart=@out@/lib/steamos-manager
  Restart=on-failure
  RestartSec=1
- EnvironmentFile=%t/gamescope-environment
+ RestartMaxDelaySec=10
+diff --git a/steamos-manager/src/audio.rs b/steamos-manager/src/audio.rs
+index 7b14d10..1364f7d 100644
+--- a/steamos-manager/src/audio.rs
++++ b/steamos-manager/src/audio.rs
+@@ -49,9 +49,9 @@ impl AudioManager {
+ 
+     #[cfg(not(test))]
+     pub async fn is_supported() -> Result<bool> {
+-        if try_exists("/usr/bin/wpctl").await? {
++        if try_exists("@wireplumber@/bin/wpctl").await? {
+             // wpctl exists, now check if node.features.audio.mono is patched in also
+-            let output = script_output("pw-dump", &["sm-settings"]).await?;
++            let output = script_output("@pipewire@/bin/pw-dump", &["sm-settings"]).await?;
+             let object: Value = serde_json::from_str(&output)?;
+             // Now check for our key
+             if let Some(array) = object.as_array() {
+@@ -90,7 +90,7 @@ impl AudioManager {
+                 Mode::Stereo => "false",
+             };
+ 
+-            run_script("/usr/bin/wpctl", &["settings", MONO_KEY, mono]).await?;
++            run_script("@wireplumber@/bin/wpctl", &["settings", MONO_KEY, mono]).await?;
+         }
+ 
+         self.mode = Some(mode);
+@@ -99,7 +99,7 @@ impl AudioManager {
+ 
+     #[cfg(not(test))]
+     async fn load_values(&mut self) -> Result<()> {
+-        let output = script_output("/usr/bin/wpctl", &["settings", MONO_KEY]).await?;
++        let output = script_output("@wireplumber@/bin/wpctl", &["settings", MONO_KEY]).await?;
+ 
+         match output.trim() {
+             "Value: true" => self.mode = Some(Mode::Mono),
 diff --git a/steamos-manager/src/daemon/root.rs b/steamos-manager/src/daemon/root.rs
 index 47fcb01..8598b05 100644
 --- a/steamos-manager/src/daemon/root.rs
@@ -114,10 +160,10 @@ index 47fcb01..8598b05 100644
  
      fn state(&self) -> &RootState {
 diff --git a/steamos-manager/src/daemon/user.rs b/steamos-manager/src/daemon/user.rs
-index 4826c75..5054543 100644
+index 40ba4af..b30f585 100644
 --- a/steamos-manager/src/daemon/user.rs
 +++ b/steamos-manager/src/daemon/user.rs
-@@ -69,7 +69,7 @@ impl DaemonContext for UserContext {
+@@ -81,7 +81,7 @@ impl DaemonContext for UserContext {
      }
  
      fn system_config_path(&self) -> Result<PathBuf> {
@@ -127,10 +173,10 @@ index 4826c75..5054543 100644
  
      fn state(&self) -> &UserState {
 diff --git a/steamos-manager/src/hardware.rs b/steamos-manager/src/hardware.rs
-index e6d1276..018bf3c 100644
+index 61eff14..0c5240e 100644
 --- a/steamos-manager/src/hardware.rs
 +++ b/steamos-manager/src/hardware.rs
-@@ -31,7 +31,7 @@ const SYS_VENDOR_PATH: &str = "/sys/class/dmi/id/sys_vendor";
+@@ -32,7 +32,7 @@ const SYS_VENDOR_PATH: &str = "/sys/class/dmi/id/sys_vendor";
  const BOARD_NAME_PATH: &str = "/sys/class/dmi/id/board_name";
  const PRODUCT_NAME_PATH: &str = "/sys/class/dmi/id/product_name";
  #[cfg(not(test))]
@@ -140,10 +186,10 @@ index e6d1276..018bf3c 100644
  const DEVICE_CONFIG_PATH: &str = "../data/devices";
  
 diff --git a/steamos-manager/src/manager/root.rs b/steamos-manager/src/manager/root.rs
-index 9b1d564..e71b439 100644
+index e2eb954..47ad016 100644
 --- a/steamos-manager/src/manager/root.rs
 +++ b/steamos-manager/src/manager/root.rs
-@@ -174,7 +174,7 @@ impl SteamOSManager {
+@@ -179,7 +179,7 @@ impl SteamOSManager {
          };
          for index in indices {
              let result = script_output(
@@ -152,27 +198,11 @@ index 9b1d564..e71b439 100644
                  &["-s", index],
              )
              .await;
-diff --git a/steamos-manager/src/manager/user.rs b/steamos-manager/src/manager/user.rs
-index 0557e88..87c7779 100644
---- a/steamos-manager/src/manager/user.rs
-+++ b/steamos-manager/src/manager/user.rs
-@@ -1164,10 +1164,7 @@ pub(crate) async fn create_interfaces(
-     }
- 
-     object_server.at(MANAGER_PATH, manager2).await?;
--
--    if try_exists(path("/usr/bin/orca")).await? {
--        object_server.at(MANAGER_PATH, screen_reader).await?;
--    }
-+    object_server.at(MANAGER_PATH, screen_reader).await?;
- 
-     if !list_wifi_interfaces().await.unwrap_or_default().is_empty() {
-         object_server
 diff --git a/steamos-manager/src/platform.rs b/steamos-manager/src/platform.rs
-index 4476d15..017a825 100644
+index b5ebf3f..c72ece5 100644
 --- a/steamos-manager/src/platform.rs
 +++ b/steamos-manager/src/platform.rs
-@@ -175,7 +175,7 @@ impl FormatDeviceConfig {
+@@ -174,7 +174,7 @@ impl FormatDeviceConfig {
  impl PlatformConfig {
      #[cfg(not(test))]
      async fn load() -> Result<Option<PlatformConfig>> {
@@ -182,7 +212,7 @@ index 4476d15..017a825 100644
              .await
              .with_context(|| format!("Failed to read {path}"))?;
 diff --git a/steamos-manager/src/wifi.rs b/steamos-manager/src/wifi.rs
-index 679b06f..e5041cc 100644
+index 1bd3457..c4311e8 100644
 --- a/steamos-manager/src/wifi.rs
 +++ b/steamos-manager/src/wifi.rs
 @@ -32,19 +32,18 @@ use crate::{path, read_config_directory};
