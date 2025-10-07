@@ -150,7 +150,7 @@ jupiter-firewall.ignore = true
 
 jupiter-hw-support = { map = ["jupiter-hw-support", "steamdeck-hw-theme", "steamdeck-firmware", "steamos-polkit-helpers"], pkgrel = 3 }
 
-jupiter-legacy-support.check = "1.154-1"
+jupiter-legacy-support.check = "1.155-1"
 
 # Valve telemetry stuff
 jupiter-steamos-log-submitter.ignore = true
@@ -279,7 +279,7 @@ renderdoc-minimal.ignore = true
 rtl88x2ce-dkms.ignore = true
 
 # not used yet
-scx-scheds.check = "1.0.15.linux.neptune.611-1"
+scx-scheds.check = "1.0.16.linux.neptune-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
@@ -305,7 +305,7 @@ steamos-atomupd-client.ignore = true
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
 steamos-customizations-git.check = "20250527.1-2"
-steamos-customizations-jupiter.check = "20250715.1-2"
+steamos-customizations-jupiter.check = "20250923.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
