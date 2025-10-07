@@ -1,7 +1,7 @@
 { stdenv, mesa, fetchFromGitHub }:
 let
-  version = "25.2.0";
-  jupiterVersion = "steamos-25.6.0";
+  version = "25.3.0";
+  jupiterVersion = "steamos-25.8.0";
 in stdenv.mkDerivation {
   pname = "mesa";
   version = "${version}.${jupiterVersion}";
@@ -10,7 +10,7 @@ in stdenv.mkDerivation {
     owner = "Jovian-Experiments";
     repo = "mesa";
     rev = jupiterVersion;
-    hash = "sha256-7plgicMRqR6hatOxMkhC/vVgmqw3M7J6OyU37HA68IM=";
+    hash = "sha256-w0PQfQimIfb7vq2iJh3INIsUgpfW9buzCQm3aKHNOkM=";
   };
 
   inherit (mesa) buildInputs nativeBuildInputs propagatedBuildInputs;
@@ -33,7 +33,7 @@ in stdenv.mkDerivation {
     "-D valgrind=enabled"
     "-D video-codecs=all"
     "-D vulkan-drivers=amd"
-    "-D vulkan-layers="
+    "-D vulkan-layers=anti-lag"
     # Jupiter specific options below:
     "-D b_lto=false"
     "-D gallium-vdpau=disabled"
@@ -47,6 +47,8 @@ in stdenv.mkDerivation {
     "-D llvm=enabled"
     "-D lmsensors=disabled"
     "-D gpuvis=true"
-    "-D radv-build-id=b0f01041524e5ffa6a44281db9150fe88eae8192"
+    "-D display-info=disabled"
+    "-D amdgpu-virtio=true"
+    "-D radv-build-id=65ab33a50c0fc47c34344ef1a64d56b4315e9b04"
   ];
 }
