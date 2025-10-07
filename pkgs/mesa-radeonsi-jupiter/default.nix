@@ -50,6 +50,7 @@ stdenv.mkDerivation {
     "-D vulkan-drivers=intel,swrast"
     "-D vulkan-layers=device-select,intel-nullhw,overlay,screenshot,vram-report-limit"
     "-D gallium-mediafoundation=disabled"
+    "-D amdgpu-virtio=true"
     "-D radeonsi-build-id=057e67ad037d628991eb985a05023c20caeed78d"
 
     # Jovian: build with our libgbm
