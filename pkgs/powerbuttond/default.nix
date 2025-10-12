@@ -41,6 +41,10 @@ stdenv.mkDerivation(finalAttrs: {
     "DESTDIR=$(out)"
   ];
 
+  postInstall = ''
+    mv $out/lib/udev/rules.d/{80,60}-steamos-power-button.rules
+  '';
+
   meta = with lib; {
     description = "Steam Deck power button daemon";
     license = licenses.bsd2;
