@@ -158,6 +158,7 @@ buildLinux (args // rec {
     DRM_HYPERV = lib.mkForce (option no);
     FB_HYPERV = lib.mkForce (option no);
     INTEL_TDX_GUEST = lib.mkForce (option no);
+    HYPERV = lib.mkForce (option no);
     KVM_GUEST = lib.mkForce (option no);
     MOUSE_PS2_VMMOUSE = lib.mkForce (option no);
     PARAVIRT_TIME_ACCOUNTING = lib.mkForce (option no);
