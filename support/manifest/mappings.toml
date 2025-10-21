@@ -150,7 +150,7 @@ jupiter-firewall.ignore = true
 
 jupiter-hw-support = { map = ["jupiter-hw-support", "steamdeck-hw-theme", "steamdeck-firmware", "steamos-polkit-helpers"], pkgrel = 3 }
 
-jupiter-legacy-support.check = "1.155-1"
+jupiter-legacy-support.check = "1.156-1"
 
 # Valve telemetry stuff
 jupiter-steamos-log-submitter.ignore = true
@@ -231,7 +231,7 @@ mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
 networkmanager.check = "1.52.1-1.1"
 
 # just the ladspa plugin
-noisetorch.check = "0.12.2.r47.g6d895f3-1"
+noisetorch.check = "0.12.2.r47.g6d895f3-2"
 
 # backport, we don't have bandwidth to deal with a11y right now :(
 orca.ignore = true
@@ -241,7 +241,7 @@ pacman-contrib.ignore = true
 paru.ignore = true
 
 # we ship a newer version, but patches may be valuable
-pipewire.check = "1:1.4.9-1.1"
+pipewire.check = "1:1.4.9-1.2"
 
 # builds from master branch for Qt6
 # FIXME: do we want this?
@@ -304,8 +304,8 @@ steamos-atomupd-client.ignore = true
 
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
-steamos-customizations-git.check = "20250527.1-2"
-steamos-customizations-jupiter.check = "20250923.1-1"
+steamos-customizations-git.check = "20251010.1-2"
+steamos-customizations-jupiter.check = "20251010.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
