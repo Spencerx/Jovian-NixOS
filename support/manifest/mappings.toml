@@ -293,8 +293,8 @@ steam_notif_daemon = { map = true, pkgrel = 3, fixup = "v" }
 
 steamdeck-dsp = { map = true, pkgrel = 3 }
 
-# we don't ship those
-steamdeck-kde-presets.ignore = true
+# we don't ship those but they may be useful to reference
+steamdeck-kde-presets.check = "3.8.1-1"
 
 # very old, unused, but might be interesting? 
 steamfs-git.ignore = true
@@ -305,7 +305,7 @@ steamos-atomupd-client.ignore = true
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
 steamos-customizations-git.check = "20251010.1-2"
-steamos-customizations-jupiter.check = "20251010.1-1"
+steamos-customizations-jupiter.check = "20251014.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
@@ -366,6 +366,9 @@ vpower.ignore = true
 wakehook = { map = true, pkgrel = 2 }
 
 wireplumber.map = "wireplumber-jupiter"
+
+# non-critical fix backports
+xdg-desktop-portal.check = "1.20.3-2.1"
 
 xdg-desktop-portal-gamescope = { map = true, pkgrel = 1 }
 xdg-desktop-portal-holo = { map = true, pkgrel = 2 }
