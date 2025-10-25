@@ -10,13 +10,13 @@
 }:
 stdenv.mkDerivation(finalAttrs: {
   pname = "powerbuttond";
-  version = "3.3";
+  version = "3.4";
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "powerbuttond";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-bXvDBkLVxygefEeNtZjeZIXyOMsnEYnXxqWVgRAEEqY=";
+    hash = "sha256-n8p6MTOXtibNAO1mZMc2QeQhphrJDEgC/6E74MRLFqQ=";
   };
 
   patches = [
@@ -40,10 +40,6 @@ stdenv.mkDerivation(finalAttrs: {
   makeFlags = [
     "DESTDIR=$(out)"
   ];
-
-  postInstall = ''
-    mv $out/lib/udev/rules.d/{80,60}-steamos-power-button.rules
-  '';
 
   meta = with lib; {
     description = "Steam Deck power button daemon";
