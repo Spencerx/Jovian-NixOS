@@ -5,4 +5,7 @@
 # 1 - update error
 # 7 - no update available
 # 8 - need reboot
+
+[ "$(readlink /run/booted-system/kernel)" != "$(readlink /nix/var/nix/profiles/system/kernel)" ] && exit 8
+
 exit 7
