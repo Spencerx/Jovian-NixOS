@@ -188,7 +188,7 @@ libversion.ignore = true
 # security backport
 libxml2.check = "2.14.5-1.1"
 
-linux-firmware-neptune = { map = "linux-firmware-jupiter", pkgrel = 2 }
+linux-firmware-neptune = { map = "linux-firmware-jupiter", pkgrel = 1 }
 
 # some other mainline kernel build
 linux-lts.ignore = true
