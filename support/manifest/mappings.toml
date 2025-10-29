@@ -84,6 +84,9 @@ drm_info-git.ignore = true
 # FIXME: GPU reset thingy, package?
 drm_janitor.ignore = true
 
+# does magic telemetry we don't want
+earlyoom.ignore = true
+
 # we use nixpkgs version
 f3.ignore = true
 
@@ -110,7 +113,7 @@ grub.ignore = true
 # we use nixos config
 holo-dmi-rules.check = "1.0-2"
 
-holo-earlyoom.check = "1.0-1"
+holo-earlyoom.check = "1.1-1"
 
 # unused, check in case it ever becomes used again
 holo-fstab-repair.check = "0.1-1"
@@ -279,7 +282,7 @@ renderdoc-minimal.ignore = true
 rtl88x2ce-dkms.ignore = true
 
 # not used yet
-scx-scheds.check = "1.0.16.linux.neptune-1"
+scx-scheds.check = "1.0.17.linux.neptune-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
@@ -352,8 +355,9 @@ udisks2.check = "2.10.1-6.1"
 # debug tool
 umr.ignore = true
 
-# just disables tests, but may have stuff later
-upower.check = "0.99.15.jupiter-1.5"
+# disables shutdown on battery critical, we probably don't want to do that
+# without way more validation
+upower.check = "1.90.10-1.1"
 
 # non-critical but would be nice to have
 # FIXME: package these
