@@ -31,13 +31,13 @@ let
   };
   self = stdenv.mkDerivation(finalAttrs: {
     pname = "steamdeck-dsp";
-    version = "0.72";
+    version = "0.74";
 
     src = fetchFromGitHub {
       owner = "Jovian-Experiments";
       repo = "steamdeck-dsp";
       rev = finalAttrs.version;
-      hash = "sha256-MI7/gakxV6lTRjM16INMfBRp5U6UajQtgEy58410D44=";
+      hash = "sha256-0E6t321I6uu9UriVAUL9YburJPuf9935ibEh3F3AcK8=";
     };
 
     nativeBuildInputs = [
