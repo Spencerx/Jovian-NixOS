@@ -122,6 +122,10 @@ stdenv.mkDerivation {
     rm h2offt-g H2OFFTx64-G.sh
     popd
 
+    # FIXME: hack to dodge the custom Valve Plymouth setup
+    substituteInPlace usr/lib/systemd/system/jupiter-controller-update.service \
+      --replace-fail "/usr/lib/hwsupport/jupiter-controller-update-with-splash" "$out/bin/jupiter-controller-update"
+
     substituteInPlace usr/lib/systemd/system/*.service --replace "/usr" "$out"
     install -D -m 644 usr/lib/systemd/system/jupiter-biosupdate.service $out/lib/systemd/system/jupiter-biosupdate.service
     install -D -m 644 usr/lib/systemd/system/jupiter-controller-update.service $out/lib/systemd/system/jupiter-controller-update.service
