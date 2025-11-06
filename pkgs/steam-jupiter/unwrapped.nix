@@ -6,19 +6,16 @@
 { steam-unwrapped', fetchurl }:
 
 let
-  bootstrapVersion = "1.0.0.81-2.6";
+  bootstrapVersion = "20251031.0";
   bundle = fetchurl {
-    url = "https://steamdeck-packages.steamos.cloud/archlinux-mirror/sources/jupiter-main/steam-jupiter-stable-${bootstrapVersion}.src.tar.gz";
-    hash = "sha256-Gh6QsjqxQbBMbCGAnZbqE/uzZyBG1zE43Kz5m9MRNq4=";
+    url = "https://steamdeck-packages.steamos.cloud/misc/steam-snapshots/steam_jupiter_stable_bootstrapped_${bootstrapVersion}.tar.xz";
+    hash = "sha256-A6Y7+eUV4Rwwrv8u0DilxeDBvTFHMBqzL33P+YwhCTs=";
   };
 in steam-unwrapped'.overrideAttrs (old: {
   pname = "steam-jupiter-unwrapped";
 
   postInstall = (old.postInstall or "") + ''
     >&2 echo ":: Injecting Steam Deck client bootstrap..."
-    tar xvf ${bundle}
-    cp steam-jupiter-stable/steam_jupiter_stable_bootstrapped_*.tar.xz $out/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
+    cp ${bundle} $out/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
   '';
-  
-  passthru = { inherit bootstrapVersion; };
 })

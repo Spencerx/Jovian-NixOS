@@ -287,7 +287,7 @@ scx-scheds.check = "1.0.17.linux.neptune-1"
 # FIXME: package this
 steam-im-modules.ignore = true
 
-steam-jupiter-stable = { map = "steam-unwrapped", attr = "bootstrapVersion" }
+steam-jupiter-stable = { map = "steam-unwrapped", pkgrel = "2" }
 
 # we don't use this
 steam-jupiter-oobe.ignore = true
