@@ -16,4 +16,9 @@ mangohud'.overrideAttrs(old: {
       hash = "sha256-PWMw0hOtUBzfezdDue3s4h+BNsNQvZmKbWLZfn9xO18=";
     })
   ];
+
+  postPatch = old.postPatch or "" + ''
+    sed -i 's/OVERLAY_PARAM_ENABLED_hide_engine_names])/OVERLAY_PARAM_ENABLED_hide_engine_names] || HUDElements.params->enabled[OVERLAY_PARAM_ENABLED_horizontal])/' \
+      src/hud_elements.cpp
+  '';
 })
