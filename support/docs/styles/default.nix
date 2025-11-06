@@ -2,7 +2,7 @@
 , runCommandLocal
 , writeShellScriptBin
 , lessc
-, nodePackages
+, svgo
 }:
 
 let
@@ -18,7 +18,7 @@ let
     echo ":: Optimizing svg files"
     for f in $in.tmp/*.svg; do
       echo "::  - $f"
-      ${nodePackages.svgo}/bin/svgo $f &
+      ${svgo}/bin/svgo $f &
     done
     # Wait until all `svgo` processes are done
     # According to light testing, it is twice as fast that way.
