@@ -7,7 +7,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ python3.pkgs.wrapPython ];
   buildInputs = [ python3 ];
-  pythonPath = [ python3.pkgs.systemd ];
+  pythonPath = [ python3.pkgs.systemd-python or python3.pkgs.systemd ];
 
   nativeCheckInputs = [
     shellcheck
