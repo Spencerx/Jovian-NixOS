@@ -91,7 +91,7 @@ stdenv.mkDerivation {
       --replace-warn ". /usr/lib/hwsupport" ". $out/lib/hwsupport"
 
     mkdir -p $out/lib/udev/rules.d
-    for rule in 99-steamos-automount.rules 99-sdcard-rescan.rules; do
+    for rule in 80-rtl-wobt.rules 99-steamos-automount.rules 99-sdcard-rescan.rules; do
       cp usr/lib/udev/rules.d/$rule $out/lib/udev/rules.d
     done
 
