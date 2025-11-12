@@ -1,24 +1,11 @@
-{ mangohud', fetchFromGitHub, fetchpatch }:
+{ mangohud', fetchFromGitHub }:
 mangohud'.overrideAttrs(old: {
-  version = "0.8.1.r103";
+  version = "0.8.2.rc1.r4";
 
   src = fetchFromGitHub {
     owner = "flightlessmango";
     repo = "mangohud";
-    rev = "10479eb59aa6c1c92af9d2afca3e33c5a17d875b";
-    hash = "sha256-9mylciDKXCYXHvAWco8ALLOeojGF5/h8Lp+c1dQfINg=";
+    rev = "1c0e8525bf105646b0ac2d002d13e481a4b6f270";
+    hash = "sha256-sHYy555wJfZSdhtMOC5UtfLf6gPGeuxSKDX8HH3ZOw8=";
   };
-
-  # cherry-picked in jupiter-main
-  patches = old.patches or [] ++ [
-    (fetchpatch {
-      url = "https://github.com/flightlessmango/MangoHud/commit/ff6e5954ea7e340d9bb4509754babf0db1b7c431.diff";
-      hash = "sha256-PWMw0hOtUBzfezdDue3s4h+BNsNQvZmKbWLZfn9xO18=";
-    })
-  ];
-
-  postPatch = old.postPatch or "" + ''
-    sed -i 's/OVERLAY_PARAM_ENABLED_hide_engine_names])/OVERLAY_PARAM_ENABLED_hide_engine_names] || HUDElements.params->enabled[OVERLAY_PARAM_ENABLED_horizontal])/' \
-      src/hud_elements.cpp
-  '';
 })

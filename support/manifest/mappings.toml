@@ -230,7 +230,7 @@ lsb-release.ignore = true
 # packaging changes, removes a heavy dependency
 maliit-keyboard.check = "2.3.1-4.2"
 
-mangohud.check = "0.8.1.r103.g10479eb-3"
+mangohud.check = "0.8.2.rc1.r4.g1c0e852-1"
 
 mesa = { map = "mesa-radeonsi-jupiter", pkgrel = "2", fixup = "mesa" }
 mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
