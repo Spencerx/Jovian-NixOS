@@ -23,7 +23,7 @@ index d574495..d205026 100644
  
 -steamargs=("-steamos3" "-steampal" "-steamdeck" "-gamepadui")
 +# Jovian: remove -steamdeck here so we can set it in the wrapper instead
-+steamargs=("-gamepadui")
++steamargs=("-steamos3" "-gamepadui")
  if [[ -x $HOME/devkit-game/devkit-steam ]]; then
  	exec "$HOME"/devkit-game/devkit-steam "${steamargs[@]}"
  else

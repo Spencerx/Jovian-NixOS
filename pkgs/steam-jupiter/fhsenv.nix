@@ -10,7 +10,7 @@
 # so we have the correct client version. This is important even for desktop
 # use because only the Steam Deck branch of the client has the new on-screen
 # keyboard that's summoned with STEAM + X.
-, platformArgs ? "-steamos3 -steampal -steamdeck"
+, platformArgs ? "-steamdeck"
 , ...
 } @ args:
 
