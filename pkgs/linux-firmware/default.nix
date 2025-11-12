@@ -1,12 +1,12 @@
 { linux-firmware, fetchFromGitHub }:
 
 linux-firmware.overrideAttrs(_: rec {
-  version = "20251022.1";
+  version = "20251111.1";
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "linux-firmware";
     rev = "jupiter-${version}";
-    hash = "sha256-5HmquVlN5U/wSxw+XEoDEZK7PPrU6ODYDDyCwtemX88=";
+    hash = "sha256-WSVExTVoB4x+Ca3iNsh/FRfix9NNTWqWMPFEdZKFw7g=";
   };
 })
