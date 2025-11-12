@@ -8,20 +8,20 @@
 }:
 python3.pkgs.buildPythonPackage rec {
   pname = "decky-loader";
-  version = "3.1.11";
+  version = "3.2.0";
 
   src = fetchFromGitHub {
     owner = "SteamDeckHomebrew";
     repo = "decky-loader";
     rev = "v${version}";
-    hash = "sha256-gSzgmT7TUDJsQvB9mx++cuHfAQqZIhpL5zoNGpTDmnU=";
+    hash = "sha256-uYR9TXRXyzwc7WMeOw+9hzgWJKaNCGkIIud7CDusLfM=";
   };
 
   pnpmDeps = pnpm_9.fetchDeps {
     fetcherVersion = 1;
     inherit pname version src;
     sourceRoot = "${src.name}/frontend";
-    hash = "sha256-ZS7cz2ESUq7bJWuS16mxqZEvv64Mm8RcWTVfwf2zu5o=";
+    hash = "sha256-ZO1V19dGH2xxYzafBuKHD6eXKTEOzsMQVd7ne4zUr/s=";
   };
 
   pyproject = true;

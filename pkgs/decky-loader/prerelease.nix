@@ -1,23 +1,4 @@
 {
   decky-loader,
-  fetchFromGitHub,
-  pnpm_9,
 }:
-decky-loader.overridePythonAttrs rec {
-  pname = "decky-loader";
-  version = "3.2.0-pre1";
-
-  src = fetchFromGitHub {
-    owner = "SteamDeckHomebrew";
-    repo = "decky-loader";
-    rev = "v${version}";
-    hash = "sha256-uYR9TXRXyzwc7WMeOw+9hzgWJKaNCGkIIud7CDusLfM=";
-  };
-
-  pnpmDeps = pnpm_9.fetchDeps {
-    fetcherVersion = 1;
-    inherit pname version src;
-    sourceRoot = "${src.name}/frontend";
-    hash = "sha256-ZO1V19dGH2xxYzafBuKHD6eXKTEOzsMQVd7ne4zUr/s=";
-  };
-}
+decky-loader
