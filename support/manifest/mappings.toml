@@ -142,6 +142,9 @@ holo-rust-packaging-tools.ignore = true
 # applied as NixOS config
 holo-zram-swap.check = "0.3-0"
 
+# backport
+hwdata.check = "0.397-1.1"
+
 # FIXME: IME stuff
 ibus.ignore = true
 ibus-anthy.ignore = true
@@ -314,7 +317,7 @@ steamos-atomupd-client.ignore = true
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
 steamos-customizations-git.check = "20251010.1-2"
-steamos-customizations-jupiter.check = "20251014.1-1"
+steamos-customizations-jupiter.check = "20251113.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
@@ -350,7 +353,7 @@ steamos-systemreport.ignore = true
 steamos-tweak-mtu-probing.check = "1-1"
 
 # SteamOS A/B specific patch
-systemd.check = "257.7-2.1"
+systemd.check = "257.7-2.2"
 
 # lul
 ttf-twemoji-default.ignore = true
