@@ -72,20 +72,6 @@ index ac590d7..96340ab 100644
 +Exec=@coreutils@/bin/false
  SystemdService=steamos-manager.service
  
-diff --git a/data/user/orca.service b/data/user/orca.service
-index a378a66..ebe7313 100644
---- a/data/user/orca.service
-+++ b/data/user/orca.service
-@@ -3,7 +3,7 @@ Description=Orca Screen Reader
- 
- [Service]
- Type=simple
--ExecStart=/usr/bin/orca
--ExecReload=/usr/bin/orca --replace
-+ExecStart=@orca@/bin/orca
-+ExecReload=@orca@/bin/orca --replace
- Restart=on-failure
- EnvironmentFile=%t/gamescope-environment
 diff --git a/data/user/steamos-manager-session-cleanup.service b/data/user/steamos-manager-session-cleanup.service
 index ba2b6d0..c847907 100644
 --- a/data/user/steamos-manager-session-cleanup.service

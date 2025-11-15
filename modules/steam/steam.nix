@@ -56,6 +56,9 @@ in
       # Required by steamos-manager
       services.inputplumber.enable = true;
 
+      # https://github.com/Jovian-Experiments/steamos-manager/blob/5fecc6bbb47719a65d0b10aacbd0ffe873fb1e43/data/user/orca.service#L9
+      systemd.user.services.orca.serviceConfig.EnvironmentFile = "%t/gamescope-environment";
+
       # Vendor patch: https://raw.githubusercontent.com/Jovian-Experiments/PKGBUILDs-mirror/cdaeca26642d59fc9109e98ac9ce2efe5261df1b/0001-Add-systemd-service.patch
       systemd.user.services.wakehook = {
         wantedBy = ["gamescope-session.service"];
