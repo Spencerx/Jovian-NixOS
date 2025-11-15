@@ -11,7 +11,6 @@
   iwd,
   trace-cmd,
   iw,
-  orca,
   pipewire,
   wireplumber-jupiter,
   pkg-config,
@@ -50,7 +49,6 @@ rustPlatform.buildRustPackage rec {
       iwd = iwd;
       traceCmd = trace-cmd;
       iw = iw;
-      orca = orca;
       pipewire = pipewire;
       wireplumber = wireplumber-jupiter;
       out = null;
@@ -107,7 +105,6 @@ rustPlatform.buildRustPackage rec {
 
     install -m644 "data/user/com.steampowered.SteamOSManager1.service" "$out/share/dbus-1/services/"
     install -m644 "data/user/steamos-manager.service" "$out/lib/systemd/user/"
-    install -m644 "data/user/orca.service" "$out/lib/systemd/user/"
   '';
 
   postFixup = ''
