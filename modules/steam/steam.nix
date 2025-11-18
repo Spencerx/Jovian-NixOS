@@ -55,6 +55,12 @@ in
 
       # Required by steamos-manager
       services.inputplumber.enable = true;
+      services.scx = {
+        enable = lib.mkDefault true;
+        scheduler = "scx_lavd";
+      };
+      systemd.services.scx.wantedBy = lib.mkForce [];
+      services.orca.enable = lib.mkDefault true;
 
       # https://github.com/Jovian-Experiments/steamos-manager/blob/5fecc6bbb47719a65d0b10aacbd0ffe873fb1e43/data/user/orca.service#L9
       systemd.user.services.orca.serviceConfig.EnvironmentFile = "%t/gamescope-environment";
