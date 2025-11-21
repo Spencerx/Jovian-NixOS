@@ -329,7 +329,6 @@ steamos-efi.ignore = true
 steamos-kdumpst-layer.ignore = true
 steamos-log-submitter.ignore = true
 
-# not used yet? track this anyway for when it becomes used
 steamos-manager.map = true
 
 # not relevant to us
