@@ -178,7 +178,7 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.5"
+kwin.check = "6.4.3-1.6"
 kwin-x11.check = "6.4.3-1.1"
 
 libdisplay-info.check = "0.3.0-1"
@@ -290,8 +290,7 @@ renderdoc-minimal.ignore = true
 # unused
 rtl88x2ce-dkms.ignore = true
 
-# not used yet
-scx-scheds.check = "1.0.17.linux.neptune-1"
+scx-scheds.check = "1.0.18.linux.neptune-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
