@@ -236,7 +236,7 @@ maliit-keyboard.check = "2.3.1-4.2"
 mangohud.check = "0.8.2.rc1.r5.g3a2885d-1"
 
 mesa = { map = "mesa-radeonsi-jupiter", pkgrel = "2", fixup = "mesa" }
-mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
+mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "1", fixup = "mesa" }
 
 # we don't actually apply any of this, but it's worth checking
 # FIXME?
