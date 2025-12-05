@@ -29,7 +29,8 @@
 7zip.ignore = true
 
 # we use our own upstream version
-alsa-ucm-conf.check = "1.2.14-2.1"
+# FIXME: maybe port Dualsense config from Valve
+alsa-ucm-conf.check = "1.2.14-2.2"
 
 # Valve A/B stuff
 atomupd-daemon.ignore = true
@@ -311,7 +312,7 @@ steam_notif_daemon = { map = true, pkgrel = 3, fixup = "v" }
 steamdeck-dsp = { map = true, pkgrel = 1 }
 
 # we don't ship those but they may be useful to reference
-steamdeck-kde-presets.check = "3.8.2-1"
+steamdeck-kde-presets.check = "3.8.3-1"
 
 # very old, unused, but might be interesting? 
 steamfs-git.ignore = true
