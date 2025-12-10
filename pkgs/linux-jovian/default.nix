@@ -153,6 +153,9 @@ buildLinux (args // rec {
     JOYSTICK_XBOX_GIP_FF = yes;
     JOYSTICK_XBOX_GIP_LEDS = yes;
 
+    # Enable Valve LEDs driver
+    LEDS_VALVE = module;
+
     # Jovian: fix fallout from the vendor-set options
     DRM_AMD_DC_SI = lib.mkForce (option no);
     DRM_HYPERV = lib.mkForce (option no);
