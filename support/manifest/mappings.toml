@@ -182,7 +182,7 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.7"
+kwin.check = "6.4.3-1.8"
 kwin-x11.check = "6.4.3-1.1"
 
 libdisplay-info.check = "0.3.0-1"
@@ -293,6 +293,8 @@ rauc.ignore = true
 # debugging tools
 renderdoc.ignore = true
 renderdoc-minimal.ignore = true
+
+rtkit.check = "0.14-1"
 
 # unused
 rtl88x2ce-dkms.ignore = true
