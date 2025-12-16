@@ -10,6 +10,7 @@
 , bash
 , coreutils
 , dmidecode
+, gnused
 }:
 
 let
@@ -29,15 +30,24 @@ let
       dmidecode
     ];
   };
+  cec-hwconfig-solution = {
+    scripts = [ "share/cec-sysconf/cec-hwconfig" ];
+    interpreter = "${bash}/bin/bash";
+    inputs = [
+      coreutils
+      dmidecode
+      gnused
+    ];
+  };
   self = stdenv.mkDerivation(finalAttrs: {
     pname = "steamdeck-dsp";
-    version = "0.77";
+    version = "0.80";
 
     src = fetchFromGitHub {
       owner = "Jovian-Experiments";
       repo = "steamdeck-dsp";
       rev = finalAttrs.version;
-      hash = "sha256-yHD3fkEAV9yXxPG6dL3aUJa5f3nmp/ISY8wA8q0kFzY=";
+      hash = "sha256-EyrtL/aSeurWob+0jiLWHkLV2Rqfh3fvHlolcKXVZfU=";
     };
 
     nativeBuildInputs = [
@@ -62,6 +72,7 @@ let
         pipewire-confs/systemd/system/pipewire-sysconf.service \
         wireplumber/hardware-profiles/wireplumber-hwconfig \
         wireplumber/systemd/system/wireplumber-sysconf.service \
+        cec-sysconf/systemd/system/cec-sysconf.service \
         --replace-fail "/usr/share" "$out/share"
     '';
 
@@ -75,9 +86,11 @@ let
 
       ${resholve.phraseSolution "pipewire-hwconfig" pipewire-hwconfig-solution}
       ${resholve.phraseSolution "wireplumber-hwconfig" wireplumber-hwconfig-solution}
+      ${resholve.phraseSolution "cec-hwconfig" cec-hwconfig-solution}
 
       # work around dead symlink
       touch $out/share/pipewire/hardware-profiles/valve-jupiter/filter-chain.conf.d/filter-chain-sink.conf
+      rm -r $out/lib/systemd/system/multi-user.target.wants/
 
       for pkg in pipewire wireplumber; do
         for i in $(find $out/share/$pkg/hardware-profiles/* -type f -printf "%P\n" | sort | uniq); do 
