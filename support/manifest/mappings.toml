@@ -243,7 +243,7 @@ maliit-keyboard.check = "2.3.1-4.2"
 mangohud.check = "0.8.2.rc1.r5.g3a2885d-1"
 
 mesa = { map = "mesa-radeonsi-jupiter", pkgrel = "2", fixup = "mesa" }
-mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "1", fixup = "mesa" }
+mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
 
 # we don't actually apply any of this, but it's worth checking
 # FIXME?
@@ -260,7 +260,7 @@ pacman-contrib.ignore = true
 paru.ignore = true
 
 # we ship a newer version, but patches may be valuable
-pipewire.check = "1:1.4.9-1.2"
+pipewire.check = "1:1.4.9-1.4"
 
 # builds from master branch for Qt6
 # FIXME: do we want this?
@@ -299,7 +299,7 @@ rtkit.check = "0.14-1"
 # unused
 rtl88x2ce-dkms.ignore = true
 
-scx-scheds.check = "1.0.18.linux.neptune-1"
+scx-scheds.check = "1.0.19.linux.neptune-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
