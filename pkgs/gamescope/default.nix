@@ -7,13 +7,13 @@
 #       version shipped by the vendor, ensuring feature level is equivalent.
 
 gamescope'.overrideAttrs(old: rec {
-  version = "3.16.15";
+  version = "3.16.19";
 
   src = fetchFromGitHub {
     owner = "ValveSoftware";
     repo = "gamescope";
     rev = version;
     fetchSubmodules = true;
-    hash = "sha256-/JMk1ZzcVDdgvTYC+HQL09CiFDmQYWcu6/uDNgYDfdM=";
+    hash = "sha256-Bwj781MVeQexjYnHfDArgjVjl7eQW+CzbdKrLdcAKkg=";
   };
 })
