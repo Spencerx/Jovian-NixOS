@@ -2,6 +2,8 @@
 , fetchFromGitHub
 , nodejs
 , pnpm_9
+, fetchPnpmDeps
+, pnpmConfigHook
 , python3
 , coreutils
 , psmisc
@@ -17,11 +19,12 @@ python3.pkgs.buildPythonPackage rec {
     hash = "sha256-E4OdUAu7H6k9vKxUmD0eQdLNG4c1HBw7fVjgqfgpNNE=";
   };
 
-  pnpmDeps = pnpm_9.fetchDeps {
-    fetcherVersion = 1;
+  pnpmDeps = fetchPnpmDeps {
     inherit pname version src;
     sourceRoot = "${src.name}/frontend";
-    hash = "sha256-8MaUm48FmtHniFSwX7O4dOa45kG/oiOv3cWX4+cFSkA=";
+    pnpm = pnpm_9;
+    fetcherVersion = 3;
+    hash = "sha256-Kw1I+r1zsJJ+0bi0RyfG7LYyXnRW/+nKod6KKr/xrnk=";
   };
 
   pyproject = true;
@@ -30,7 +33,8 @@ python3.pkgs.buildPythonPackage rec {
 
   nativeBuildInputs = [
     nodejs
-    pnpm_9.configHook
+    pnpm_9
+    pnpmConfigHook
   ];
 
   preBuild = ''
