@@ -21,7 +21,7 @@ python3.pkgs.buildPythonPackage rec {
     fetcherVersion = 1;
     inherit pname version src;
     sourceRoot = "${src.name}/frontend";
-    hash = "sha256-MPrMGzOiRw6VW/foo3xKVAG7WNKzdqVZW3DoO1wOGqM=";
+    hash = "sha256-8MaUm48FmtHniFSwX7O4dOa45kG/oiOv3cWX4+cFSkA=";
   };
 
   pyproject = true;
