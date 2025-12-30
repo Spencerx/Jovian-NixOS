@@ -99,7 +99,7 @@ index c6dc9fe..96368ad 100644
  RestartSec=1
  RestartMaxDelaySec=10
 diff --git a/steamos-manager-macros/src/lib.rs b/steamos-manager-macros/src/lib.rs
-index 0353423..2fa3ac3 100644
+index 6df1431..83fbeaf 100644
 --- a/steamos-manager-macros/src/lib.rs
 +++ b/steamos-manager-macros/src/lib.rs
 @@ -860,7 +860,7 @@ pub fn remote_manager(input: TokenStream) -> TokenStream {
@@ -146,7 +146,7 @@ index 7b14d10..1364f7d 100644
          match output.trim() {
              "Value: true" => self.mode = Some(Mode::Mono),
 diff --git a/steamos-manager/src/daemon/root.rs b/steamos-manager/src/daemon/root.rs
-index 5e7a4f4..d443eb9 100644
+index e2744c5..25aa822 100644
 --- a/steamos-manager/src/daemon/root.rs
 +++ b/steamos-manager/src/daemon/root.rs
 @@ -108,7 +108,7 @@ impl DaemonContext for RootContext {
@@ -159,7 +159,7 @@ index 5e7a4f4..d443eb9 100644
  
      fn state(&self) -> &RootState {
 diff --git a/steamos-manager/src/daemon/user.rs b/steamos-manager/src/daemon/user.rs
-index 6b3a217..cf33105 100644
+index bc5b634..3bff0b9 100644
 --- a/steamos-manager/src/daemon/user.rs
 +++ b/steamos-manager/src/daemon/user.rs
 @@ -81,7 +81,7 @@ impl DaemonContext for UserContext {
@@ -172,7 +172,7 @@ index 6b3a217..cf33105 100644
  
      fn state(&self) -> &UserState {
 diff --git a/steamos-manager/src/hardware.rs b/steamos-manager/src/hardware.rs
-index 0fea30f..710f628 100644
+index 1512a84..08bf1e4 100644
 --- a/steamos-manager/src/hardware.rs
 +++ b/steamos-manager/src/hardware.rs
 @@ -34,7 +34,7 @@ const SYS_VENDOR_PATH: &str = "/sys/class/dmi/id/sys_vendor";
@@ -185,23 +185,23 @@ index 0fea30f..710f628 100644
  const DEVICE_CONFIG_PATH: &str = "../data/devices";
  
 diff --git a/steamos-manager/src/manager/root.rs b/steamos-manager/src/manager/root.rs
-index d58478a..3473360 100644
+index 37fb668..9d51537 100644
 --- a/steamos-manager/src/manager/root.rs
 +++ b/steamos-manager/src/manager/root.rs
 @@ -183,7 +183,7 @@ impl SteamOSManager {
+             _ => return Vec::new(),
          };
          for index in indices {
-             let result = script_output(
--                "/usr/bin/steamos-polkit-helpers/jupiter-get-als-gain",
-+                "@polkitHelpers@/bin/steamos-polkit-helpers/jupiter-get-als-gain",
-                 &["-s", index],
-             )
-             .await;
+-            let result = script_output("/usr/bin/dmidecode", &["--oem-string", index]).await;
++            let result = script_output("@dmidecode@/bin/dmidecode", &["--oem-string", index]).await;
+             gains.push(match result {
+                 Ok(as_string) => as_string.trim().parse().unwrap_or(-1.0),
+                 Err(message) => {
 diff --git a/steamos-manager/src/manager/user.rs b/steamos-manager/src/manager/user.rs
-index 23b6712..cea69b1 100644
+index 7c2cb5b..8715885 100644
 --- a/steamos-manager/src/manager/user.rs
 +++ b/steamos-manager/src/manager/user.rs
-@@ -1486,10 +1486,6 @@ impl Service for ScreenReaderSetupService {
+@@ -1481,10 +1481,6 @@ impl Service for ScreenReaderSetupService {
      const NAME: &'static str = "screenreader-setup";
  
      async fn run(&mut self) -> Result<()> {
@@ -213,7 +213,7 @@ index 23b6712..cea69b1 100644
          let orca_manager = OrcaManager::new(&self.session).await?;
          let screen_reader = Arc::new(Mutex::new(orca_manager));
 diff --git a/steamos-manager/src/platform.rs b/steamos-manager/src/platform.rs
-index 48b385d..d8560ed 100644
+index 513be96..5501182 100644
 --- a/steamos-manager/src/platform.rs
 +++ b/steamos-manager/src/platform.rs
 @@ -174,7 +174,7 @@ impl FormatDeviceConfig {
@@ -226,10 +226,10 @@ index 48b385d..d8560ed 100644
              .await
              .with_context(|| format!("Failed to read {path}"))?;
 diff --git a/steamos-manager/src/power.rs b/steamos-manager/src/power.rs
-index 291d5a9..96979e7 100644
+index 6ae12c2..d3592a7 100644
 --- a/steamos-manager/src/power.rs
 +++ b/steamos-manager/src/power.rs
-@@ -351,10 +351,7 @@ impl<'dbus> CpuSchedulerManager<'dbus> {
+@@ -273,10 +273,7 @@ impl<'dbus> CpuSchedulerManager<'dbus> {
  
      #[cfg(not(test))]
      pub async fn is_supported() -> Result<bool> {
@@ -242,10 +242,10 @@ index 291d5a9..96979e7 100644
  
      pub(crate) async fn get_available_cpu_schedulers(&self) -> Result<Vec<CpuScheduler>> {
 diff --git a/steamos-manager/src/session.rs b/steamos-manager/src/session.rs
-index 73f9b2d..8fac1be 100644
+index a29c638..0e28dc3 100644
 --- a/steamos-manager/src/session.rs
 +++ b/steamos-manager/src/session.rs
-@@ -91,7 +91,7 @@ pub(crate) enum SessionManagerMessage {
+@@ -90,7 +90,7 @@ pub(crate) enum SessionManagerMessage {
  }
  
  pub(crate) async fn is_session_managed() -> Result<bool> {
@@ -255,10 +255,10 @@ index 73f9b2d..8fac1be 100644
  
  #[cfg(test)]
 diff --git a/steamos-manager/src/wifi.rs b/steamos-manager/src/wifi.rs
-index 02c6679..509a409 100644
+index 746dfd4..9cd661c 100644
 --- a/steamos-manager/src/wifi.rs
 +++ b/steamos-manager/src/wifi.rs
-@@ -32,19 +32,18 @@ use crate::{path, read_config_directory};
+@@ -33,19 +33,18 @@ use crate::{path, read_config_directory};
  
  const OVERRIDE_CONTENTS: &str = "[Service]
  ExecStart=
@@ -279,13 +279,17 @@ index 02c6679..509a409 100644
 -    "/usr/lib/NetworkManager/conf.d",
      "/etc/NetworkManager/conf.d",
  ];
- 
-@@ -228,11 +227,11 @@ pub(crate) async fn get_wifi_backend() -> Result<WifiBackend> {
- }
- 
- pub(crate) async fn set_wifi_backend(backend: WifiBackend) -> Result<()> {
--    run_script("/usr/bin/steamos-wifi-set-backend", &[backend.to_string()]).await
-+    run_script("@stubs@/bin/steamos-wifi-set-backend", &[backend.to_string()]).await
+ const WIFI_BACKEND_FILE: &str = "/etc/NetworkManager/conf.d/99-valve-wifi-backend.conf";
+@@ -279,7 +278,7 @@ async fn ensure_default_interface() -> Result<()> {
+     }
+     debug!("Missing wlan interace, creating it explicitly");
+     run_script(
+-        "/usr/bin/iw",
++        "@iw@/bin/iw",
+         &[
+             "phy",
+             "phy0",
+@@ -382,7 +381,7 @@ pub(crate) async fn set_wifi_backend(backend: WifiBackend, connection: &Connecti
  }
  
  pub(crate) async fn list_wifi_interfaces() -> Result<Vec<String>> {
@@ -294,7 +298,7 @@ index 02c6679..509a409 100644
      Ok(output
          .lines()
          .filter_map(|line| match line.trim().split_once(' ') {
-@@ -246,7 +245,7 @@ pub(crate) async fn get_wifi_power_management_state() -> Result<WifiPowerManagem
+@@ -396,7 +395,7 @@ pub(crate) async fn get_wifi_power_management_state() -> Result<WifiPowerManagem
      let mut found_any = false;
      for iface in list_wifi_interfaces().await? {
          let output =
@@ -303,12 +307,12 @@ index 02c6679..509a409 100644
          for line in output.lines() {
              match line.trim() {
                  "Power save: on" => return Ok(WifiPowerManagement::Enabled),
-@@ -267,7 +266,7 @@ pub(crate) async fn set_wifi_power_management_state(state: WifiPowerManagement)
+@@ -421,7 +420,7 @@ pub(crate) async fn set_wifi_power_management_state(
  
      for iface in list_wifi_interfaces().await? {
          run_script(
 -            "/usr/bin/iw",
 +            "@iw@/bin/iw",
-             &["dev", iface.as_str(), "set", "power_save", state],
+             &["dev", iface.as_str(), "set", "power_save", str_state],
          )
          .await
