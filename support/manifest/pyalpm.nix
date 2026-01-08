@@ -1,16 +1,16 @@
 { lib
 , buildPythonPackage
 , fetchFromGitLab
-, pkgconfig
-, setuptools
-, wheel
+, pkg-config
+, meson-python
+, pytest
 , libarchive
 , pacman
 }:
 
 buildPythonPackage rec {
   pname = "pyalpm";
-  version = "0.10.9";
+  version = "0.11.1";
   pyproject = true;
 
   src = fetchFromGitLab {
@@ -18,13 +18,16 @@ buildPythonPackage rec {
     owner = "archlinux";
     repo = "pyalpm";
     rev = version;
-    hash = "sha256-hn28B/WAkLnFOTL+CstnjJdrcmE0Gat+1DXk8DffCWc=";
+    hash = "sha256-Q1Ufcjn2aalLqqn19JRP39CzjYyVjyHSTse7wLA3f5w=";
   };
 
   nativeBuildInputs = [
-    pkgconfig
-    setuptools
-    wheel
+    pkg-config
+    meson-python
+  ];
+
+  nativeCheckInputs = [
+    pytest
   ];
 
   buildInputs = [
