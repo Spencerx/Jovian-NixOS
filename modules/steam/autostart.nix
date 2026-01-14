@@ -55,17 +55,6 @@ in
 
   config = mkIf cfg.enable (mkMerge [
     (mkIf cfg.autoStart {
-      assertions = [
-        {
-          assertion = !config.systemd.services.display-manager.enable;
-          message = ''
-            Traditional Display Managers cannot be enabled when jovian.steam.autoStart is used
-
-            Hint: check `services.displayManager.*.enable` options in your configuration.
-          '';
-        }
-      ];
-
       warnings = lib.optional (cfg.desktopSession == null) ''
         jovian.steam.desktopSession is unset.
 
