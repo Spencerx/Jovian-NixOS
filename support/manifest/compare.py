@@ -28,7 +28,7 @@ def parse_desc(desc: str):
 
 def fetch_valve_repo(name: str):
     url = f"https://steamdeck-packages.steamos.cloud/archlinux-mirror/{name}/os/x86_64/{name}.db.tar.xz"
-    repo = httpx.get(url).read()
+    repo = httpx.get(url, timeout=60).read()
 
     with tarfile.open(fileobj=io.BytesIO(repo), mode="r:xz") as tf:
         for file in tf.getmembers():
