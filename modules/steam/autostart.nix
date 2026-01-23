@@ -54,6 +54,14 @@ in
   };
 
   config = mkIf cfg.enable (mkMerge [
+    {
+      warnings = lib.optional (!cfg.autoStart && cfg.desktopSession != null) ''
+        jovian.steam.desktopSession has no effect if jovian.steam.autoStart is disabled.
+
+        Either enable jovian.steam.autoStart, or remove the desktopSession setting.
+      '';
+    }
+
     (mkIf cfg.autoStart {
       warnings = lib.optional (cfg.desktopSession == null) ''
         jovian.steam.desktopSession is unset.
