@@ -100,6 +100,9 @@ f3.ignore = true
 # Arch stuff
 filesystem.ignore = true
 
+# not relevant to us
+firewalld.ignore = true
+
 # FIXME: some internal Valve thing, investigate?
 foxnet.ignore = true
 foxnetstatsd.ignore = true
