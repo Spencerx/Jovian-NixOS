@@ -1,4 +1,4 @@
-{ mangohud', fetchFromGitHub, stdenv, meson, git }:
+{ mangohud', fetchFromGitHub, stdenv, meson, git, cacert }:
 let
   # This is kind of a horrible hack to allow wraps to work.
   # We may want this in nixpkgs? idk
@@ -15,7 +15,7 @@ let
     pname = "mangohud-meson-deps";
     inherit version src;
 
-    nativeBuildInputs = [ meson git ];
+    nativeBuildInputs = [ meson git cacert ];
 
     buildCommand = ''
       runPhase unpackPhase
