@@ -30,7 +30,7 @@
 
 # we use our own upstream version
 # FIXME: maybe port Dualsense config from Valve
-alsa-ucm-conf.check = "1.2.14-2.2"
+alsa-ucm-conf.check = "1.2.14-2.3"
 
 # Valve A/B stuff
 atomupd-daemon.ignore = true
@@ -331,7 +331,7 @@ steamos-atomupd-client.ignore = true
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
 steamos-customizations-git.check = "20251010.1-2"
-steamos-customizations-jupiter.check = "20260123.1-1"
+steamos-customizations-jupiter.check = "20260130.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
