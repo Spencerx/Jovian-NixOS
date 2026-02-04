@@ -166,6 +166,7 @@ buildLinux (args // rec {
     MOUSE_PS2_VMMOUSE = lib.mkForce (option no);
     PARAVIRT_TIME_ACCOUNTING = lib.mkForce (option no);
     TDX_GUEST_DRIVER = lib.mkForce (option no);
+    NOVA_CORE = lib.mkForce (option no);
   };
 
   src = fetchFromGitHub {
