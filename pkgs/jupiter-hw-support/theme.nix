@@ -1,7 +1,7 @@
 { lib
 , stdenv
 , callPackage
-, xorg
+, xcursorgen
 }:
 
 let
@@ -14,7 +14,7 @@ stdenv.mkDerivation {
   inherit (src) version;
 
   nativeBuildInputs = [
-    xorg.xcursorgen
+    xcursorgen
   ];
 
   dontConfigure = true;

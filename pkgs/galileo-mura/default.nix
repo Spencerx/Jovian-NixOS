@@ -13,7 +13,7 @@
 , gnused
 , gnutar
 , wget
-, xorg
+, xprop
 }:
 let
   solution = {
@@ -27,7 +27,7 @@ let
       gnused
       gnutar
       wget
-      xorg.xprop
+      xprop
       "${placeholder "out"}/bin"
     ];
 
