@@ -160,6 +160,9 @@ ibus-table-cangjie-lite.ignore = true
 
 inputplumber.map = true
 
+# some non-critical patches
+iwd.check = "3.9-1.1"
+
 jupiter-dock-updater-bin = { map = true, pkgrel = 1 }
 
 jupiter-fan-control = { map = true, pkgrel = 4 }
