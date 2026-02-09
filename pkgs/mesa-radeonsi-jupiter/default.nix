@@ -40,8 +40,7 @@ stdenv.mkDerivation {
     "-D b_ndebug=true"
     "-D gallium-drivers=radeonsi,llvmpipe,zink,iris,i915"
     "-D gallium-extra-hud=true"
-    # Jovian: disabled on vendor, enable here to not break nixpkgs Mesa packaging assumptions
-    # "-D gallium-rusticl=false"
+    "-D gallium-rusticl=false"
     "-D gles1=disabled"
     "-D html-docs=disabled"
     "-D libunwind=disabled"
