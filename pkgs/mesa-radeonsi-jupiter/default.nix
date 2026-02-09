@@ -27,8 +27,11 @@ stdenv.mkDerivation {
     buildInputs
     nativeBuildInputs
     propagatedBuildInputs
-    # inherit fixups so we get correct paths in EGL driver/Vulkan layer manifests
-    postFixup;
+  ;
+
+  # inherit fixups so we get correct paths in EGL driver/Vulkan layer manifests,
+  # but fix up the fixup so we don't patchelf a thing we don't have
+  postFixup = lib.replaceString "$opencl/lib/libRusticlOpenCL.so" "" mesa.postFixup;
 
   separateDebugInfo = true;
 
