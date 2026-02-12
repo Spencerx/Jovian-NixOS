@@ -47,6 +47,9 @@ in
         "amdgpu.lockup_timeout=5000,10000,10000,5000"
         "ttm.pages_min=2097152"
         "amdgpu.sched_hw_submission=4"
+        # it currently causes black/white flashes when showing/hiding planes
+        # https://github.com/Jovian-Experiments/jupiter-hw-support/commit/1a2776307a58d065c619d4d7350be6d5a202e991
+        "amdgpu.dcdebugmask=0x20000"
         "audit=0"
         # Jovian: intentionally not using this one, as many people run
         # setups with LUKS password prompts on fbcon
