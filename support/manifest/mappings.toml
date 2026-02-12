@@ -308,7 +308,7 @@ rtkit.check = "0.14-1"
 # unused
 rtl88x2ce-dkms.ignore = true
 
-scx-scheds.check = "1.0.19.linux.neptune-1"
+scx-scheds.check = "1.0.20.linux.neptune-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
