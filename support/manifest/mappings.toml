@@ -261,12 +261,16 @@ networkmanager.check = "1.52.1-1.2"
 # just the ladspa plugin
 noisetorch.check = "0.12.2.r47.g6d895f3-2"
 
+openssl.check = "3.5.5-1.1"
+
 # backport, we don't have bandwidth to deal with a11y right now :(
 orca.ignore = true
 
 # Arch stuff
 pacman-contrib.ignore = true
 paru.ignore = true
+
+pcre2.check = "10.47-1.1"
 
 # we ship a newer version, but patches may be valuable
 pipewire.check = "1:1.4.10-1.2"
@@ -308,7 +312,7 @@ rtkit.check = "0.14-1"
 # unused
 rtl88x2ce-dkms.ignore = true
 
-scx-scheds.check = "1.0.20.linux.neptune-1"
+scx-scheds.check = "1.0.20.linux.steamos-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
