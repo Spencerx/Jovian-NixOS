@@ -127,7 +127,8 @@ buildLinux (args // rec {
     ZSWAP_DEFAULT_ON = yes;
 
     # Build as module to experiment with toggling
-    TCG_TPM = module;
+    # Jovian: NixOS pulls it in as y always
+    # TCG_TPM = module;
 
     # Per Colin at Quectel
     CFG80211_CERTIFICATION_ONUS = yes;
