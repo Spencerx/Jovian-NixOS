@@ -30,7 +30,7 @@
 
 # we use our own upstream version
 # FIXME: maybe port Dualsense config from Valve
-alsa-ucm-conf.check = "1.2.14-2.3"
+alsa-ucm-conf.check = "1.2.14-2.4"
 
 # Valve A/B stuff
 atomupd-daemon.ignore = true
