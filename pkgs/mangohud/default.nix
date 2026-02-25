@@ -2,13 +2,13 @@
 let
   # This is kind of a horrible hack to allow wraps to work.
   # We may want this in nixpkgs? idk
-  version = "0.8.3.rc1.r13";
+  version = "0.8.3.rc1.r18";
 
   src = fetchFromGitHub {
     owner = "flightlessmango";
     repo = "mangohud";
-    rev = "756ffcfdd7a688ecef5716891e84b43cb9c9cb15";
-    hash = "sha256-ZhcJVhYXRTTouhOHB89QEwG4w7fYEdvigB3Q3zwNIJg=";
+    rev = "01b724d3e43f668babcbd70b550944bea4bdd524";
+    hash = "sha256-aGrHjcEzir9vq+bbhY1lLX1qmrNMtasUnoKbd3HGAS0=";
   };
 
   mesonDeps = stdenv.mkDerivation {
