@@ -73,7 +73,35 @@ in
         to keep this behavior.
       '';
 
-      services.displayManager.enable = true;
+
+      services.displayManager = {
+        autoLogin = {
+          enable = true;
+          user = cfg.user;
+        };
+        sddm = {
+          enable = true;
+          autoLogin.relogin = true;
+        };
+        defaultSession = "gamescope-wayland";
+      };
+
+      # tell steamos-manager it's allowed to manage our session
+      environment.etc."sddm.conf.d/steamos.conf".text = "";
+
+      # Steam overrides this SOMETIMES seemingly for no reason
+      # so we need to force it back to the user's choice.
+      systemd.user.services.jovian-setup-desktop-session = {
+        wants = [ "steamos-manager.service" ];
+        after = [ "steamos-manager.service" ];
+
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${pkgs.steamos-manager}/bin/steamosctl set-default-desktop-session ${cfg.desktopSession}.desktop";
+        };
+
+        wantedBy = [ "graphical-session.target" ];
+      };
 
       systemd.user.services.gamescope-session = {
         overrideStrategy = "asDropin";
@@ -81,7 +109,6 @@ in
         environment = mkMerge (
           [
             {
-              JOVIAN_DESKTOP_SESSION = cfg.desktopSession;
               PATH = lib.mkForce null;
             }
           ]
@@ -100,42 +127,6 @@ in
             ]
           )
         );
-      };
-
-      services.greetd = {
-        enable = true;
-        settings = {
-          default_session = {
-            user = "root";
-            command = "${pkgs.jovian-greeter}/bin/jovian-greeter ${cfg.user}";
-          };
-        };
-        greeterManagesPlymouth = true;
-      };
-
-      # We handle this ourselves in the greeter
-      systemd.services.plymouth-quit.enable = false;
-
-      security.pam.services = {
-        greetd.text = ''
-          auth      requisite     pam_nologin.so
-          auth      sufficient    pam_succeed_if.so user = ${cfg.user} quiet_success
-          auth      required      pam_unix.so
-
-          account   sufficient    pam_unix.so
-
-          password  required      pam_deny.so
-
-          session   optional      pam_keyinit.so revoke
-          session   include       login
-        '';
-      };
-
-      security.wrappers.jovian-consume-session = {
-        source = "${pkgs.jovian-greeter.helper}/bin/consume-session";
-        owner = cfg.user;
-        group = "users";
-        setuid = true;
       };
 
       xdg.portal.configPackages = mkDefault [ pkgs.gamescope-session ];
