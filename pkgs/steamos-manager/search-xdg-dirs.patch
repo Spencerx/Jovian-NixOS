@@ -1,0 +1,47 @@
+diff --git a/steamos-manager/src/session.rs b/steamos-manager/src/session.rs
+index c727d1d..73416af 100644
+--- a/steamos-manager/src/session.rs
++++ b/steamos-manager/src/session.rs
+@@ -10,7 +10,9 @@
+ use anyhow::anyhow;
+ use anyhow::{Result, ensure};
+ use serde::{Deserialize, Serialize};
++use std::env;
+ use std::ffi::OsStr;
++use std::path::PathBuf;
+ use strum::{Display, EnumString};
+ #[cfg(test)]
+ use tokio::fs::{create_dir_all, write};
+@@ -114,10 +116,19 @@ fn is_valid_desktop_session_name(path: &str) -> bool {
+     true
+ }
+ 
++fn all_session_paths() -> Vec<PathBuf> {
++    ["/usr/local/share", "/usr/share"]
++        .into_iter()
++        .chain(env::var("XDG_DATA_DIRS").unwrap_or_default().split(':'))
++        .map(path)
++        .flat_map(|p| [p.join("wayland-sessions"), p.join("xsessions")])
++        .collect()
++}
++
+ pub(crate) async fn valid_desktop_sessions() -> Result<Vec<String>> {
+     let mut sessions = Vec::new();
+-    for dir in &["/usr/share/wayland-sessions/", "/usr/share/xsessions/"] {
+-        let mut entries = read_dir(path(dir)).await?;
++    for dir in all_session_paths() {
++        let mut entries = read_dir(dir).await?;
+         while let Some(entry) = entries.next_entry().await? {
+             let path = entry.path();
+             let Some(name) = path.file_name().and_then(OsStr::to_str) else {
+@@ -136,8 +147,8 @@ pub(crate) async fn is_valid_desktop_session(session: &str) -> Result<bool> {
+     if !is_valid_desktop_session_name(session) {
+         return Ok(false);
+     }
+-    for dir in &["/usr/share/wayland-sessions/", "/usr/share/xsessions/"] {
+-        if try_exists(path(dir).join(session)).await? {
++    for dir in all_session_paths() {
++        if try_exists(dir.join(session)).await? {
+             return Ok(true);
+         }
+     }

@@ -53,6 +53,7 @@ rustPlatform.buildRustPackage rec {
       dmidecode = dmidecode;
       out = null;
     })
+    ./search-xdg-dirs.patch
     # FIXME: build steamos-log-submitter and reenable this maybe?
     ./disable-ftrace.patch
   ];

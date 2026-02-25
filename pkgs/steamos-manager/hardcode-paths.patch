@@ -241,19 +241,6 @@ index 6ae12c2..d3592a7 100644
      }
  
      pub(crate) async fn get_available_cpu_schedulers(&self) -> Result<Vec<CpuScheduler>> {
-diff --git a/steamos-manager/src/session.rs b/steamos-manager/src/session.rs
-index a29c638..0e28dc3 100644
---- a/steamos-manager/src/session.rs
-+++ b/steamos-manager/src/session.rs
-@@ -90,7 +90,7 @@ pub(crate) enum SessionManagerMessage {
- }
- 
- pub(crate) async fn is_session_managed() -> Result<bool> {
--    Ok(try_exists(path(CONFIG_PREFIX).join(SESSION_CHECK_PATH)).await?)
-+    Ok(true)
- }
- 
- #[cfg(test)]
 diff --git a/steamos-manager/src/wifi.rs b/steamos-manager/src/wifi.rs
 index 746dfd4..9cd661c 100644
 --- a/steamos-manager/src/wifi.rs
