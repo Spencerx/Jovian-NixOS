@@ -1,47 +1,130 @@
+diff --git a/steamos-manager/src/manager/user.rs b/steamos-manager/src/manager/user.rs
+index 47d4432..7db7274 100644
+--- a/steamos-manager/src/manager/user.rs
++++ b/steamos-manager/src/manager/user.rs
+@@ -1172,7 +1172,7 @@ impl SessionManagement1 {
+     }
+ 
+     async fn valid_desktop_sessions(&self) -> fdo::Result<Vec<String>> {
+-        valid_desktop_sessions().await.map_err(to_zbus_fdo_error)
++        Ok(valid_desktop_sessions().into_iter().collect())
+     }
+ 
+     async fn clean_temporary_sessions(&self) -> fdo::Result<()> {
 diff --git a/steamos-manager/src/session.rs b/steamos-manager/src/session.rs
-index c727d1d..73416af 100644
+index c727d1d..39772a2 100644
 --- a/steamos-manager/src/session.rs
 +++ b/steamos-manager/src/session.rs
-@@ -10,7 +10,9 @@
+@@ -10,15 +10,17 @@
  use anyhow::anyhow;
  use anyhow::{Result, ensure};
  use serde::{Deserialize, Serialize};
-+use std::env;
++use std::collections::HashSet;
  use std::ffi::OsStr;
-+use std::path::PathBuf;
  use strum::{Display, EnumString};
++use tokio::fs::try_exists;
  #[cfg(test)]
  use tokio::fs::{create_dir_all, write};
-@@ -114,10 +116,19 @@ fn is_valid_desktop_session_name(path: &str) -> bool {
+-use tokio::fs::{read_dir, try_exists};
+ use tokio::sync::mpsc::Sender;
+ use tokio::sync::{broadcast, oneshot};
+ use tokio_stream::StreamExt;
+ use tracing::debug;
++use xdg::BaseDirectories;
+ use zbus::proxy::PropertyChanged;
+ use zbus::{Connection, fdo};
+ 
+@@ -114,34 +116,25 @@ fn is_valid_desktop_session_name(path: &str) -> bool {
      true
  }
  
-+fn all_session_paths() -> Vec<PathBuf> {
-+    ["/usr/local/share", "/usr/share"]
-+        .into_iter()
-+        .chain(env::var("XDG_DATA_DIRS").unwrap_or_default().split(':'))
-+        .map(path)
-+        .flat_map(|p| [p.join("wayland-sessions"), p.join("xsessions")])
-+        .collect()
-+}
-+
- pub(crate) async fn valid_desktop_sessions() -> Result<Vec<String>> {
-     let mut sessions = Vec::new();
+-pub(crate) async fn valid_desktop_sessions() -> Result<Vec<String>> {
+-    let mut sessions = Vec::new();
 -    for dir in &["/usr/share/wayland-sessions/", "/usr/share/xsessions/"] {
 -        let mut entries = read_dir(path(dir)).await?;
-+    for dir in all_session_paths() {
-+        let mut entries = read_dir(dir).await?;
-         while let Some(entry) = entries.next_entry().await? {
-             let path = entry.path();
-             let Some(name) = path.file_name().and_then(OsStr::to_str) else {
-@@ -136,8 +147,8 @@ pub(crate) async fn is_valid_desktop_session(session: &str) -> Result<bool> {
-     if !is_valid_desktop_session_name(session) {
-         return Ok(false);
-     }
+-        while let Some(entry) = entries.next_entry().await? {
+-            let path = entry.path();
+-            let Some(name) = path.file_name().and_then(OsStr::to_str) else {
+-                continue;
+-            };
++pub(crate) fn valid_desktop_sessions() -> HashSet<String> {
++    let xdg_base = BaseDirectories::new();
++
++    ["wayland-sessions", "xsessions"]
++        .iter()
++        .flat_map(|path| xdg_base.list_data_files(path))
++        .filter_map(|path| {
++            let name = path.file_name().and_then(OsStr::to_str)?;
+             if !is_valid_desktop_session_name(name) {
+-                continue;
+-            }
+-            sessions.push(name.to_string());
+-        }
+-    }
+-    Ok(sessions)
++                return None;
++            };
++
++            Some(name.to_string())
++        })
++        .collect()
+ }
+ 
+-pub(crate) async fn is_valid_desktop_session(session: &str) -> Result<bool> {
+-    if !is_valid_desktop_session_name(session) {
+-        return Ok(false);
+-    }
 -    for dir in &["/usr/share/wayland-sessions/", "/usr/share/xsessions/"] {
 -        if try_exists(path(dir).join(session)).await? {
-+    for dir in all_session_paths() {
-+        if try_exists(dir.join(session)).await? {
-             return Ok(true);
-         }
+-            return Ok(true);
+-        }
+-    }
+-    Ok(false)
++pub(crate) fn is_valid_desktop_session(session: &str) -> bool {
++    valid_desktop_sessions().contains(session)
+ }
+ 
+ impl SessionManager {
+@@ -244,7 +237,7 @@ impl SessionManager {
+ 
+     pub(crate) async fn set_default_desktop_session(&self, session: &str) -> Result<()> {
+         ensure!(
+-            is_valid_desktop_session(session).await?,
++            is_valid_desktop_session(session),
+             "Invalid desktop session {session}"
+         );
+         let mut state = self.get_state().await?;
+@@ -454,8 +447,8 @@ mod test {
+         write(path("/usr/share/xsessions/fake"), b"").await.unwrap();
+ 
+         assert_eq!(
+-            valid_desktop_sessions().await.unwrap(),
+-            &["plasma.desktop", "plasmax11.desktop"]
++            valid_desktop_sessions(),
++            HashSet::from(["plasma.desktop".into(), "plasmax11.desktop".into()])
+         );
      }
+ 
+@@ -482,16 +475,12 @@ mod test {
+             .unwrap();
+         write(path("/usr/share/xsessions/fake"), b"").await.unwrap();
+ 
+-        assert!(is_valid_desktop_session("plasma.desktop").await.unwrap());
+-        assert!(is_valid_desktop_session("plasmax11.desktop").await.unwrap());
+-        assert!(!is_valid_desktop_session("gamescope.desktop").await.unwrap());
+-        assert!(
+-            !is_valid_desktop_session("doesnotexist.desktop")
+-                .await
+-                .unwrap()
+-        );
+-        assert!(!is_valid_desktop_session(".fake.desktop").await.unwrap());
+-        assert!(!is_valid_desktop_session("fake").await.unwrap());
++        assert!(is_valid_desktop_session("plasma.desktop"));
++        assert!(is_valid_desktop_session("plasmax11.desktop"));
++        assert!(!is_valid_desktop_session("gamescope.desktop"));
++        assert!(!is_valid_desktop_session("doesnotexist.desktop"));
++        assert!(!is_valid_desktop_session(".fake.desktop"));
++        assert!(!is_valid_desktop_session("fake"));
+     }
+ 
+     #[tokio::test]
