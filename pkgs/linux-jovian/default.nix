@@ -102,7 +102,10 @@ buildLinux (args // rec {
 
     LENOVO_WMI_GAMEZONE = module;
     LENOVO_WMI_TUNING = module;
-    LENOVO_LEGOS_HID = module;
+    # Jovian: renamed
+    # LENOVO_LEGOS_HID = module;
+    HID_LENOVO_GO = module;
+    HID_LENOVO_GO_S = module;
 
     ZOTAC_ZONE_HID = module;
     ZOTAC_ZONE_PLATFORM = module;
