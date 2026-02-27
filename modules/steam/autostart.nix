@@ -86,6 +86,9 @@ in
         defaultSession = "gamescope-wayland";
       };
 
+      # replicate vendor failsafe in case the system is rebooted with a broken config
+      systemd.services.display-manager.serviceConfig.ExecStartPre = "-${pkgs.coreutils}/bin/rm /etc/sddm.conf.d/zzt-steamos-temp-login.conf";
+
       # tell steamos-manager it's allowed to manage our session
       environment.etc."sddm.conf.d/steamos.conf".text = "";
 
@@ -100,6 +103,11 @@ in
           ExecStart = "${pkgs.steamos-manager}/bin/steamosctl set-default-desktop-session ${cfg.desktopSession}.desktop";
         };
 
+        wantedBy = [ "graphical-session.target" ];
+      };
+
+      systemd.user.services.steamos-manager-session-cleanup = {
+        overrideStrategy = "asDropin";
         wantedBy = [ "graphical-session.target" ];
       };
 
@@ -128,6 +136,7 @@ in
           )
         );
       };
+
 
       xdg.portal.configPackages = mkDefault [ pkgs.gamescope-session ];
     })

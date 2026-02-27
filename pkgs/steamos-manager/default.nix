@@ -106,6 +106,7 @@ rustPlatform.buildRustPackage rec {
 
     install -m644 "data/user/com.steampowered.SteamOSManager1.service" "$out/share/dbus-1/services/"
     install -m644 "data/user/steamos-manager.service" "$out/lib/systemd/user/"
+    install -m644 "data/user/steamos-manager-session-cleanup.service" "$out/lib/systemd/user/"
   '';
 
   postFixup = ''
