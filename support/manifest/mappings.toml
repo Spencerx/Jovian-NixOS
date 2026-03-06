@@ -56,6 +56,8 @@ calamares-settings-steamos-git.ignore = true
 # more A/B stuff
 casync.ignore = true
 
+cecd.map = true
+
 # why?
 ckbcomp.ignore = true
 
@@ -157,6 +159,8 @@ ibus.ignore = true
 ibus-anthy.ignore = true
 ibus-pinyin.ignore = true
 ibus-table-cangjie-lite.ignore = true
+
+inputattach-cec-units.map = true
 
 inputplumber.map = true
 
@@ -402,7 +406,8 @@ usbhid-gadget-passthru.ignore = true
 # FIXME: package this
 vpower.ignore = true
 
-wakehook = { map = true, pkgrel = 2 }
+# no longer used
+wakehook.ignore = true
 
 wireplumber.map = "wireplumber-jupiter"
 

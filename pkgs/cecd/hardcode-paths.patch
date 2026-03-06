@@ -1,0 +1,36 @@
+diff --git a/cecd/data/cecd.service b/cecd/data/cecd.service
+index 8953d3a..c518bbf 100644
+--- a/cecd/data/cecd.service
++++ b/cecd/data/cecd.service
+@@ -5,7 +5,7 @@ Description=Consumer Electronics Control (CEC) Daemon
+ Type=notify-reload
+ BusName=com.steampowered.CecDaemon1
+ Environment=RUST_LOG=info
+-ExecStart=/usr/bin/cecd -e
++ExecStart=@out@/bin/cecd -e
+ 
+ [Install]
+ WantedBy=graphical-session.target
+diff --git a/cecd/data/com.steampowered.CecDaemon1.service b/cecd/data/com.steampowered.CecDaemon1.service
+index fd823f1..9e1251b 100644
+--- a/cecd/data/com.steampowered.CecDaemon1.service
++++ b/cecd/data/com.steampowered.CecDaemon1.service
+@@ -1,4 +1,4 @@
+ [D-BUS Service]
+ Name=com.steampowered.CecDaemon1
+-Exec=/bin/false
++Exec=@coreutils@/bin/false
+ SystemdService=cecd.service
+diff --git a/cecd/src/config.rs b/cecd/src/config.rs
+index 84d3924..237bd92 100644
+--- a/cecd/src/config.rs
++++ b/cecd/src/config.rs
+@@ -165,7 +165,7 @@ async fn read_config_directory<P: AsRef<Path> + Sync + Send>(
+ 
+ pub(crate) async fn read_default_config() -> Result<Config> {
+     let mut builder = ConfigBuilder::<AsyncState>::default();
+-    let system_config_path = PathBuf::from("/usr/share/cecd");
++    let system_config_path = PathBuf::from("@out@/share/cecd");
+     let etc_config_path = PathBuf::from("/etc/cecd");
+     let mut config_paths = vec![system_config_path, etc_config_path];
+     if let Some(home) = BaseDirectories::new().get_config_home() {

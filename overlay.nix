@@ -51,7 +51,6 @@ rec {
   jupiter-fan-control = final.callPackage ./pkgs/jupiter-fan-control { };
   powerbuttond = final.callPackage ./pkgs/powerbuttond { };
   steam_notif_daemon = final.callPackage ./pkgs/steam_notif_daemon { };
-  wakehook = final.callPackage ./pkgs/wakehook { };
 
   jupiter-hw-support = final.callPackage ./pkgs/jupiter-hw-support { };
   steamdeck-hw-theme = final.callPackage ./pkgs/jupiter-hw-support/theme.nix { };
@@ -99,6 +98,9 @@ rec {
   steam = final.callPackage ./pkgs/steam-jupiter/fhsenv.nix {
     steam = prev.steam;
   };
+
+  cecd = final.callPackage ./pkgs/cecd { };
+  inputattach-cec-units = final.callPackage ./pkgs/inputattach-cec-units { };
 
   sdgyrodsu = final.callPackage ./pkgs/sdgyrodsu { };
 

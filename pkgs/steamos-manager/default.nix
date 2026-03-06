@@ -22,17 +22,17 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "steamos-manager";
-  version = "25.12.0";
+  version = "26.0.1";
 
   src = fetchFromGitLab {
     domain = "gitlab.steamos.cloud";
     owner = "holo";
     repo = "steamos-manager";
     rev = "v${version}";
-    hash = "sha256-6BNuIyqCZfAaHokfltoS65SwIY4boVUUltZCe9J++iY=";
+    hash = "sha256-TdiKY9dCxgurkjh9vAVvwmBlAswMLvVb29Uy/KVYhjU=";
   };
 
-  cargoHash = "sha256-Nazojb3mP2rP5ybvwVsElaAATfZfeX3nUx+LVwQEuoc=";
+  cargoHash = "sha256-45X3ixQ200LVfSDhMcBzqjQsebydw76nGeqn7c7/rDY=";
 
   # tests assume Steam Deck hardware and FHS paths
   doCheck = false;
@@ -53,7 +53,6 @@ rustPlatform.buildRustPackage rec {
       dmidecode = dmidecode;
       out = null;
     })
-    ./search-xdg-dirs.patch
     # FIXME: build steamos-log-submitter and reenable this maybe?
     ./disable-ftrace.patch
   ];
@@ -107,6 +106,7 @@ rustPlatform.buildRustPackage rec {
     install -m644 "data/user/com.steampowered.SteamOSManager1.service" "$out/share/dbus-1/services/"
     install -m644 "data/user/steamos-manager.service" "$out/lib/systemd/user/"
     install -m644 "data/user/steamos-manager-session-cleanup.service" "$out/lib/systemd/user/"
+    install -m644 "data/user/steamos-manager-configure-cecd.service" "$out/lib/systemd/user/"
   '';
 
   postFixup = ''
