@@ -52,6 +52,6 @@ in stdenv.mkDerivation {
     "-D intel-rt=disabled"
     "-D sysprof=false"
     "-D tools=drm-shim"
-    "-D radv-build-id=2e7d89d5cde65dd51b101e65c02d54afd97c1f65"
+    "-D radv-build-id=3f582a01c248bc07d324e54427aa192d006a5f34"
   ];
 }
