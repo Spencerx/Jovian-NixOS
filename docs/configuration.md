@@ -31,18 +31,6 @@ Select the *Gaming Mode* sesssion in your Display Manager, or run `start-gamesco
 
 The *Switch to Desktop* option will not work as intended, instead it will close Steam.
 
-
-### As a *nested* window
-
-Run `gamescope-session` within an existing desktop session.
-
-This will run [gamescope](https://github.com/ValveSoftware/gamescope) in nested mode which may result in higher latency.
-
-Usage as a *nested* window is less tested, and may have other undesirable idiosyncrasies.
-
-The *Switch to Desktop* option will not work as intended, instead it will close Steam.
-
-
 ## Going further
 
 This is a NixOS system, you can do much more.
