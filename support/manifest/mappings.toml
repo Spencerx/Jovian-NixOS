@@ -42,7 +42,7 @@ avahi.ignore = true
 bluedevil.check = "1:6.4.3-2"
 
 # FIXME: has some not-yet-upstream patches, maybe we want them in nixpkgs?
-bluez.check = "5.83-1.2"
+bluez.check = "5.86-4.1"
 
 # more A/B stuff
 bmap-tools.ignore = true
@@ -81,6 +81,10 @@ dirlock.ignore = true
 
 # we don't need this
 dkms.ignore = true
+
+# non-critical
+# FIXME: package?
+dmemcg-booster.ignore = true
 
 # non-critical
 # FIXME: package
@@ -183,6 +187,10 @@ jupiter-steamos-log-submitter.ignore = true
 
 # FIXME: what is this?
 jupiter-validation-tools.ignore = true
+
+# non-critical
+# FIXME: package?
+kcgroups.ignore = true
 
 # security backport
 kdeconnect.check = "25.04.3-1.1"
