@@ -82,6 +82,9 @@ in
         sddm = {
           enable = true;
           autoLogin.relogin = true;
+          # Valve uses the default X11 greeter, but ideally you'd never see it anyway
+          # and the closure size impact is significantly less this way.
+          wayland.enable = true;
         };
         defaultSession = "gamescope-wayland";
       };
