@@ -102,6 +102,12 @@ rec {
   cecd = final.callPackage ./pkgs/cecd { };
   inputattach-cec-units = final.callPackage ./pkgs/inputattach-cec-units { };
 
+  dmemcg-booster = final.callPackage ./pkgs/dmemcg-booster { };
+  kcgroups = final.callPackage ./pkgs/kcgroups { };
+  plasma-foreground-booster = final.callPackage ./pkgs/plasma-foreground-booster { };
+
+  vpower = final.callPackage ./pkgs/vpower { };
+
   sdgyrodsu = final.callPackage ./pkgs/sdgyrodsu { };
 
   decky-loader = final.callPackage ./pkgs/decky-loader { };

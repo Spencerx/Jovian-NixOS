@@ -82,9 +82,8 @@ dirlock.ignore = true
 # we don't need this
 dkms.ignore = true
 
-# non-critical
-# FIXME: package?
-dmemcg-booster.ignore = true
+# foreground booster
+dmemcg-booster.map = true
 
 # non-critical
 # FIXME: package
@@ -188,9 +187,8 @@ jupiter-steamos-log-submitter.ignore = true
 # FIXME: what is this?
 jupiter-validation-tools.ignore = true
 
-# non-critical
-# FIXME: package?
-kcgroups.ignore = true
+# foreground booster
+kcgroups.check = "0.0.dmemcg.experimental.3-1"
 
 # security backport
 kdeconnect.check = "25.04.3-1.1"
@@ -410,9 +408,8 @@ upower.check = "1.90.10-1.1"
 # FIXME: package these
 usbhid-gadget-passthru.ignore = true
 
-# non-critical but would be nice to have
-# FIXME: package this
-vpower.ignore = true
+# more precise battery monitoring
+vpower.map = true
 
 # no longer used
 wakehook.ignore = true

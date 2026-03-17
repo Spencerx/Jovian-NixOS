@@ -51,9 +51,20 @@ in
       services.pulseaudio.support32Bit = true;
       hardware.steam-hardware.enable = mkDefault true;
 
-      environment.systemPackages = [ pkgs.gamescope pkgs.gamescope-session pkgs.steamos-polkit-helpers pkgs.steamos-manager ];
+      environment.systemPackages = [
+        pkgs.gamescope
+        pkgs.gamescope-session
+        pkgs.steamos-polkit-helpers
+        pkgs.steamos-manager
+      ];
 
-      systemd.packages = [ pkgs.gamescope-session pkgs.powerbuttond pkgs.steamos-manager ];
+      systemd.packages = [
+        pkgs.dmemcg-booster
+        pkgs.gamescope-session
+        pkgs.powerbuttond
+        pkgs.steamos-manager
+        pkgs.vpower
+      ];
 
       # Required by steamos-manager
       services.inputplumber.enable = true;
@@ -88,6 +99,21 @@ in
 
         # https://gitlab.steamos.cloud/holo/steamos-manager/-/issues/1
         wantedBy = [ "multi-user.target" ];
+      };
+
+      systemd.services.dmemcg-booster-system = {
+        overrideStrategy = "asDropin";
+        wantedBy = [ "multi-user.target" ];
+      };
+
+      systemd.user.services.dmemcg-booster-user = {
+        overrideStrategy = "asDropin";
+        wantedBy = [ "graphical-session-pre.target" ];
+      };
+
+      systemd.services.vpower = {
+        overrideStrategy = "asDropin";
+        wantedBy = [ "graphical.target" ];
       };
 
       services.dbus.packages = [ pkgs.steamos-manager ];
