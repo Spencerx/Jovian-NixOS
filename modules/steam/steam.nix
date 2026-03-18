@@ -101,11 +101,10 @@ in
         wantedBy = [ "multi-user.target" ];
       };
 
-      # FIXME: this somehow segfaults systemd at shutdown
-      # systemd.services.dmemcg-booster-system = {
-      #   overrideStrategy = "asDropin";
-      #   wantedBy = [ "multi-user.target" ];
-      # };
+      systemd.services.dmemcg-booster-system = {
+        overrideStrategy = "asDropin";
+        wantedBy = [ "multi-user.target" ];
+      };
 
       systemd.user.services.dmemcg-booster-user = {
         overrideStrategy = "asDropin";

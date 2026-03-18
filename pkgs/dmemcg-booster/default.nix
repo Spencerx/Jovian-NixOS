@@ -7,14 +7,14 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "dmemcg-booster";
-  version = "0.1.0";
+  version = "0.1.1";
 
   src = fetchFromGitLab {
     domain = "gitlab.steamos.cloud";
     owner = "holo";
     repo = "dmemcg-booster";
     tag = finalAttrs.version;
-    hash = "sha256-ZEDctJF5+n45VrrscIbKT2ND0IKZvUSpZfC5ugraNhU=";
+    hash = "sha256-g4rm8Oh1vDuuK2VXNs5A0HANyGWuY80wM0v69LCphf0=";
   };
 
   postPatch = ''
