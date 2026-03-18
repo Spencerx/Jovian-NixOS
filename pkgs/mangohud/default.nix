@@ -20,9 +20,12 @@ let
     buildCommand = ''
       runPhase unpackPhase
       MESON_PACKAGE_CACHE_DIR=$out meson subprojects download
+      
+      # no idea what those are, but meson sometimes fails to clean them up, ruining r11y
+      rm -f $out/tmp*
     '';
 
-    outputHash = "sha256-LIIAbvFmFgVVuGoTbxNVSdKlpmOH+JOEJQxEGIjitf4=";
+    outputHash = "sha256-5Cy68E6yB5ZUkIpQbphrTgaphA0vZQ8Ue3aDrvGeehw=";
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
   };
