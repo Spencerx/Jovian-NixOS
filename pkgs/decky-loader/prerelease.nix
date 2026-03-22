@@ -1,6 +1,7 @@
 {
   decky-loader,
   fetchFromGitHub,
+  fetchPnpmDeps,
   pnpm_9,
 }:
 decky-loader.overridePythonAttrs rec {
@@ -14,9 +15,10 @@ decky-loader.overridePythonAttrs rec {
     hash = "sha256-0K4cs7Gk1gkWJB8lUYmKRmQZ9GklTJCjxAq0dsSuUrM=";
   };
 
-  pnpmDeps = pnpm_9.fetchDeps {
+  pnpmDeps = fetchPnpmDeps {
     fetcherVersion = 3;
     inherit pname version src;
+    pnpm = pnpm_9;
     sourceRoot = "${src.name}/frontend";
     hash = "sha256-iEkms4lGJo9Mryh1ruJ3Fz1TMVCoN0adHx9rYdnelmg=";
   };
