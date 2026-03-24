@@ -286,7 +286,7 @@ paru.ignore = true
 pcre2.check = "10.47-1.1"
 
 # we ship a newer version, but patches may be valuable
-pipewire.check = "1:1.4.10-1.2"
+pipewire.check = "1:1.4.10-1.3"
 
 # builds from master branch for Qt6
 # FIXME: do we want this?
