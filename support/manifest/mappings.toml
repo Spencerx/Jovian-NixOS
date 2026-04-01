@@ -56,6 +56,9 @@ calamares-settings-steamos-git.ignore = true
 # more A/B stuff
 casync.ignore = true
 
+# FIXME: ship this once the pipewire side is ready
+cec-audio-control.ignore = true
+
 cecd.map = true
 
 # why?
@@ -285,8 +288,8 @@ paru.ignore = true
 
 pcre2.check = "10.47-1.1"
 
-# we ship a newer version, but patches may be valuable
-pipewire.check = "1:1.4.10-1.4"
+# patches for CEC volume control, not upstreamed yet, not worth it
+pipewire.check = "1:1.6.2-1.1"
 
 # builds from master branch for Qt6
 # FIXME: do we want this?
