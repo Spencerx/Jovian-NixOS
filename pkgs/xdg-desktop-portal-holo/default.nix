@@ -13,13 +13,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "xdg-desktop-portal-holo";
-  version = "0.1.14.bb73298";
+  version = "0.1.18.5ad92bf";
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "xdg-desktop-portal-holo";
-    rev = "bb73298cd763e0ce131912e48c766a4032c9f910";
-    hash = "sha256-WD6yCO3EIsEqQP3dWvysJ02QCGkyUaVtyAkKiPeBjGo=";
+    rev = "5ad92bfab460cd8ea536831789c43590b3a7a71c";
+    hash = "sha256-p5JXH6uR6XQW8B45M+ndAqHLXBWSbQrWzfaSWeZhT90=";
   };
 
   strictDeps = true;
