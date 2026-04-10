@@ -277,7 +277,7 @@ networkmanager.check = "1.52.1-1.2"
 # just the ladspa plugin
 noisetorch.check = "0.12.2.r47.g6d895f3-2"
 
-openssl.check = "3.5.5-1.1"
+openssl.check = "3.5.6-1.1"
 
 # backport, we don't have bandwidth to deal with a11y right now :(
 orca.ignore = true
