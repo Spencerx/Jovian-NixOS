@@ -1,7 +1,7 @@
 { stdenv, mesa, fetchFromGitHub }:
 let
   version = "26.0.0";
-  jupiterVersion = "steamos-25.11.9";
+  jupiterVersion = "steamos-25.11.10";
 in stdenv.mkDerivation {
   pname = "mesa";
   version = "${version}.${jupiterVersion}";
@@ -10,7 +10,7 @@ in stdenv.mkDerivation {
     owner = "Jovian-Experiments";
     repo = "mesa";
     rev = jupiterVersion;
-    hash = "sha256-SLdzMN6Se6jgpl+UKvvjKO+UAp3inl76HZm3G5M9oLQ=";
+    hash = "sha256-oWeaP/tVFaq6jy8AHvM4XdCfJCd32ElsTHiiJIuqs40=";
   };
 
   inherit (mesa) buildInputs nativeBuildInputs propagatedBuildInputs;
