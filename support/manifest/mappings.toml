@@ -111,6 +111,9 @@ filesystem.ignore = true
 # not relevant to us
 firewalld.ignore = true
 
+# rebuild
+flatpak.check = "1:1.16.6-1.1"
+
 # FIXME: some internal Valve thing, investigate?
 foxnet.ignore = true
 foxnetstatsd.ignore = true
@@ -189,6 +192,9 @@ jupiter-steamos-log-submitter.ignore = true
 
 # FIXME: what is this?
 jupiter-validation-tools.ignore = true
+
+# backports
+kcoreaddons.check = "6.16.0-1.2"
 
 # foreground booster
 kcgroups.check = "0.0.dmemcg.experimental.3-1"
@@ -353,8 +359,8 @@ steamos-atomupd-client.ignore = true
 
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
-steamos-customizations-git.check = "20260330.1-1"
-steamos-customizations-jupiter.check = "20260330.1-1"
+steamos-customizations-git.check = "20260330.1-3"
+steamos-customizations-jupiter.check = "20260330.1-3"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
@@ -419,11 +425,14 @@ wakehook.ignore = true
 
 wireplumber.map = "wireplumber-jupiter"
 
+# flatpak backport dep
+xdg-dbus-proxy.check = "0.1.7-1.1"
+
 # non-critical fix backports
-xdg-desktop-portal.check = "1.20.3-2.1"
+xdg-desktop-portal.check = "1.20.4-1.1"
 
 xdg-desktop-portal-gamescope = { map = true, pkgrel = 1 }
-xdg-desktop-portal-holo = { map = true, pkgrel = 2 }
+xdg-desktop-portal-holo = { map = true, pkgrel = 1 }
 
 # ours is newer
 xdg-desktop-portal-gtk.ignore = true
