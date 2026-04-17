@@ -77,7 +77,7 @@ debos.ignore = true
 desync.ignore = true
 
 # enables SteamOS A/B stuff
-discover.check = "6.4.3-1.3"
+discover.check = "6.4.3-1.4"
 
 # SteamOS disk encryption thing
 dirlock.ignore = true
@@ -210,8 +210,11 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.8"
+kwin.check = "6.4.3-1.9"
 kwin-x11.check = "6.4.3-1.2"
+
+# backports
+kwindowsystem.check = "6.16.0-1.1"
 
 libdisplay-info.check = "0.3.0-1"
 
@@ -359,8 +362,8 @@ steamos-atomupd-client.ignore = true
 
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
-steamos-customizations-git.check = "20260330.1-3"
-steamos-customizations-jupiter.check = "20260330.1-3"
+steamos-customizations-git.check = "20260415.1-1"
+steamos-customizations-jupiter.check = "20260415.1-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
@@ -438,8 +441,8 @@ xdg-desktop-portal-holo = { map = true, pkgrel = 1 }
 xdg-desktop-portal-gtk.ignore = true
 
 # packaging changes + backports for small cosmetic issues
-xorg-server.check = "21.1.19-1.1"
-xorg-xwayland.check = "24.1.9-1.1"
+xorg-server.check = "21.1.22-1.1"
+xorg-xwayland.check = "24.1.10-1.1"
 
 # Arch packaging fix, we don't care
 zenity-gtk3.check = "3.44.2-4"
