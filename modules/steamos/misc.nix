@@ -37,6 +37,7 @@ in
     (mkIf (cfg.enableProductSerialAccess) {
       systemd.tmpfiles.rules = [
         "z /sys/class/dmi/id/product_serial 440 root wheel - -"
+        "z /sys/class/dmi/id/board_serial 440 root wheel - -"
       ];
     })
     (mkIf (cfg.enableZram) {
