@@ -342,7 +342,7 @@ scx-scheds.check = "1.1.0.linux.steamos-1"
 # FIXME: package this
 steam-im-modules.ignore = true
 
-steam-jupiter-stable = { map = "steam-unwrapped", pkgrel = "4" }
+steam-jupiter-stable = { map = "steam-unwrapped", pkgrel = "6" }
 
 # we don't use this
 steam-jupiter-oobe.ignore = true
