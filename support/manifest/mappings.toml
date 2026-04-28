@@ -210,7 +210,7 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.9"
+kwin.check = "6.4.3-1.10"
 kwin-x11.check = "6.4.3-1.2"
 
 # backports
@@ -352,7 +352,7 @@ steam_notif_daemon = { map = true, pkgrel = 3, fixup = "v" }
 steamdeck-dsp = { map = true, pkgrel = 1 }
 
 # we don't ship those but they may be useful to reference
-steamdeck-kde-presets.check = "3.8.4-1"
+steamdeck-kde-presets.check = "3.9.0-1"
 
 # very old, unused, but might be interesting? 
 steamfs-git.ignore = true
