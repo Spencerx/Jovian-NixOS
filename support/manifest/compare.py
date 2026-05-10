@@ -89,15 +89,15 @@ def fixup_mesa_version(local: str, remote: str) -> tuple[str, str]:
     remote = re.sub(r'([\d.]+)(_devel)?\.[\d]+\.(steamos|radeonsi)_([\d.]+)-(\d+)', r'\1.\3-\4-\5', remote)
     return local, remote
 
-
-def fixup_wireplumber_version(local: str, remote: str) -> tuple[str, str]:
-    return local, remote.replace('.dev', '-dev')
+def fixup_epoch(local: str, remote: str) -> tuple[str, str]:
+    return f"1:{local}", remote
 
 
 HERE = pathlib.Path(__file__).parent
 FIXUPS = {
     "v": fixup_v_version,
     "mesa": fixup_mesa_version,
+    "epoch": fixup_epoch,
 }
 
 
