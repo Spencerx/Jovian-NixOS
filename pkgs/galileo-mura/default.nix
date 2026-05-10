@@ -45,13 +45,13 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "galileo-mura";
-  version = "0.9";
+  version = "0.10";
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "galileo-mura";
     rev = "v${version}";
-    hash = "sha256-eM4UHYCgj2vwK8cxh6KKta7gpFjX/7bwS7VJaKsBG7c=";
+    hash = "sha256-F32mGpFA25kbQK2/ZhUSTHfn2IKdjumoW/VyKUpUEbI=";
   };
 
   patches = [./home.patch];
