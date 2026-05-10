@@ -305,9 +305,7 @@ paru.ignore = true
 
 pcre2.check = "10.47-1.1"
 
-# patches for CEC volume control, not upstreamed yet, only used on
-# FIXME(fremont)
-pipewire.check = "1:1.6.4-1.3"
+pipewire = { map = "pipewire-jupiter", fixup = "epoch" }
 
 # builds from master branch for Qt6
 # FIXME(fremont): needed for HDMI-CEC possibly

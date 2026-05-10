@@ -59,6 +59,9 @@ rec {
   steamos-manager = final.callPackage ./pkgs/steamos-manager { };
   holo-polkit-helpers = final.callPackage ./pkgs/jupiter-hw-support/polkit-helpers.nix { };
   steamdeck-dsp = final.callPackage ./pkgs/steamdeck-dsp { };
+  pipewire-jupiter = final.callPackage ./pkgs/pipewire {
+    pipewire' = prev.pipewire;
+  };
   wireplumber-jupiter = final.callPackage ./pkgs/wireplumber {
     wireplumber' = prev.wireplumber;
   };

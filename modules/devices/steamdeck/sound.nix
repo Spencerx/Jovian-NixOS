@@ -36,6 +36,7 @@ in
 
     services.pipewire = {
       enable = true;
+      package = pkgs.pipewire-jupiter;
       pulse.enable = true;
       alsa.enable = true;
       configPackages = [ pkgs.steamdeck-dsp ];
