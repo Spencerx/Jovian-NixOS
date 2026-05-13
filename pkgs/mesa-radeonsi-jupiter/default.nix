@@ -6,8 +6,8 @@
   fetchFromGitHub,
 }:
 let
-  version = "25.3.0";
-  jupiterVersion = "radeonsi-25.3.0";
+  version = "26.1.0";
+  jupiterVersion = "radeonsi-26.1.0";
 in
 stdenv.mkDerivation {
   pname = "mesa-radeonsi-jupiter";
@@ -17,7 +17,7 @@ stdenv.mkDerivation {
     owner = "Jovian-Experiments";
     repo = "mesa";
     rev = jupiterVersion;
-    hash = "sha256-75Vn/MRMQs1DpmJQtzixcx6BxwF0PJt8djn7flrhbPE=";
+    hash = "sha256-+tXw+mnpB6OkOKpsN7qW7KxLWTUecOmpq56pJrZiMWQ=";
   };
 
   # Jovian: tell Mesa where to find libclang
