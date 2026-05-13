@@ -344,7 +344,7 @@ rtkit.check = "0.14-1"
 # unused
 rtl88x2ce-dkms.ignore = true
 
-scx-scheds.check = "1.1.0.linux.steamos-1"
+scx-scheds.check = "1.1.1.linux.steamos-1"
 
 # FIXME: package this
 steam-im-modules.ignore = true
