@@ -10,17 +10,17 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "cecd";
-  version = "0.2.0";
+  version = "0.2.1";
 
   src = fetchFromGitLab {
     domain = "gitlab.steamos.cloud";
     owner = "holo";
     repo = "linux-cec";
     tag = "cecd-${finalAttrs.version}";
-    hash = "sha256-zxFNeqjudwlwwOrnXEIyiAptQfbnjm56ruA1OS0d7CU=";
+    hash = "sha256-OzNuwZmgfSt5w+OnYidObntz1adZQkZKDRewj/g16RA=";
   };
 
-  cargoHash = "sha256-NGk3FpOmavFALv783i24zCXQiA6UtOFBy0zXTw7UBz0=";
+  cargoHash = "sha256-9H8uKX4Ht/xCB8VVO2nXNhyy1ZY0w6ruv0S9+qOMvoU=";
 
   # tests assume FHS paths
   doCheck = false;
