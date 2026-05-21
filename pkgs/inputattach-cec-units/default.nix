@@ -5,14 +5,14 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "inputattach-cec-units";
-  version = "1";
+  version = "2";
 
   src = fetchFromGitLab {
     domain = "gitlab.steamos.cloud";
     owner = "holo";
     repo = "inputattach-cec-units";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-dLz+wZCqNP23Jg8cJH622SqlE7nb7tMkC+icYRHil8U=";
+    hash = "sha256-f0bwMZr8otAIHMBfuFy9y+IQ6inpsqF5IbsgkGL0rl0=";
   };
 
   postPatch = ''
