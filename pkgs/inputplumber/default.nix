@@ -4,17 +4,17 @@
   rustPlatform,
 }:
 inputplumber'.overrideAttrs rec {
-  version = "0.76.1";
+  version = "0.77.2";
 
   src = fetchFromGitHub {
     owner = "ShadowBlip";
     repo = "InputPlumber";
     tag = "v${version}";
-    hash = "sha256-SkW79i1jutVwty18bWXJEUijDunHukF3Sxqm0VwzMz0=";
+    hash = "sha256-QxGDmuRTZLHBqZ+S73CtNKdLg/XumutGSpTSz4sGFYQ=";
   };
 
   cargoDeps = rustPlatform.fetchCargoVendor {
     inherit src;
-    hash = "sha256-nHAdU/7JHPveOvUsXqdmUQtzET2Jv6T6PN83S7TwsIM=";
+    hash = "sha256-EtCK/zYRW2LdZhPSrO6ydBXBQwIrkqaJmH+3XfwERTw=";
   };
 }
