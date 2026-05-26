@@ -70,6 +70,7 @@ in
       services.inputplumber.enable = true;
       services.scx = {
         enable = lib.mkDefault true;
+        package = pkgs.scx.rustscheds;
         scheduler = "scx_lavd";
       };
       systemd.services.scx.wantedBy = lib.mkForce [];
