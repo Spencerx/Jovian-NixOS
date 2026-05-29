@@ -10,8 +10,6 @@
   iwd,
   trace-cmd,
   iw,
-  pipewire,
-  wireplumber-jupiter,
   dmidecode,
   pkg-config,
   wrapGAppsNoGuiHook,
@@ -19,20 +17,21 @@
   gsettings-desktop-schemas,
   speechd-minimal,
   udev,
+  scx,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "steamos-manager";
-  version = "26.1.0";
+  version = "26.2.0";
 
   src = fetchFromGitLab {
     domain = "gitlab.steamos.cloud";
     owner = "holo";
     repo = "steamos-manager";
     tag = "v${version}";
-    hash = "sha256-FJl6QOo0w+GShWoybFkSrvQf5gdC927DobOFAWBoPno=";
+    hash = "sha256-dMASh4+KRlCYmPPoJjN6sDLAdwiprJQ8ZnwxUgzMvF0=";
   };
 
-  cargoHash = "sha256-R448Q55M1IE8ltNB5UqmA0jWfcnBggw6kT1dxuwSV7s=";
+  cargoHash = "sha256-l+BxAJDKQmh7/aWqkVU6BVdelG9nBnq0JI1K3pOdZ8g=";
 
   # tests assume Steam Deck hardware and FHS paths
   doCheck = false;
@@ -48,9 +47,8 @@ rustPlatform.buildRustPackage rec {
       iwd = iwd;
       traceCmd = trace-cmd;
       iw = iw;
-      pipewire = pipewire;
-      wireplumber = wireplumber-jupiter;
       dmidecode = dmidecode;
+      scx = scx.rustscheds;
       out = null;
     })
     # FIXME: build steamos-log-submitter and reenable this maybe?
