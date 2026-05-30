@@ -284,8 +284,8 @@ maliit-keyboard.check = "2.3.1-4.2"
 
 mangohud.check = "0.8.3.rc1.r24.g33c2c7dd-1"
 
-mesa = { map = "mesa-radeonsi-jupiter", pkgrel = "1", fixup = "mesa" }
-mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "1", fixup = "mesa" }
+mesa = { map = "mesa-radeonsi-jupiter", pkgrel = "3", fixup = "mesa" }
+mesa-radv = { map = "mesa-radv-jupiter", pkgrel = "2", fixup = "mesa" }
 
 # we don't actually apply any of this, but it's worth checking
 # FIXME?
@@ -445,7 +445,7 @@ xdg-dbus-proxy.check = "0.1.7-1.1"
 # non-critical fix backports
 xdg-desktop-portal.check = "1.20.4-1.1"
 
-xdg-desktop-portal-gamescope = { map = true, pkgrel = 1 }
+xdg-desktop-portal-gamescope = { map = true, pkgrel = 2 }
 xdg-desktop-portal-holo = { map = true, pkgrel = 1 }
 
 # ours is newer
