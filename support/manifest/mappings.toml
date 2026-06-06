@@ -157,7 +157,7 @@ holo-nfs-utils-tmpfiles.ignore = true
 holo-nix-offload.ignore = true
 
 # FIXME: needs matching plymouth
-holo-plymouth-themes.check = "0.5-1"
+holo-plymouth-themes.check = "0.6-1"
 
 # FIXME: investigate
 holo-rust-packaging-tools.ignore = true
@@ -353,7 +353,7 @@ scx-scheds.check = "1.1.1.linux.steamos-1"
 steam-im-modules.ignore = true
 
 # FIXME(fremont): LED udev rules
-steam-jupiter-stable = { map = "steam-unwrapped", pkgrel = "8" }
+steam-jupiter-stable = { map = "steam-unwrapped", pkgrel = "9" }
 
 # we don't use this
 steam-jupiter-oobe.ignore = true
@@ -412,7 +412,7 @@ steamos-systemreport.ignore = true
 steamos-tweak-mtu-probing.check = "1-1"
 
 # SteamOS A/B specific patch
-systemd.check = "257.7-2.3"
+systemd.check = "257.7-2.4"
 
 # lul
 ttf-twemoji-default.ignore = true
@@ -451,9 +451,12 @@ xdg-desktop-portal-holo = { map = true, pkgrel = 1 }
 # ours is newer
 xdg-desktop-portal-gtk.ignore = true
 
+# hack for streaming
+xdg-desktop-portal-kde.check = "6.4.3-2"
+
 # packaging changes + backports for small cosmetic issues
-xorg-server.check = "21.1.22-1.1"
-xorg-xwayland.check = "24.1.10-1.2"
+xorg-server.check = "21.1.23-1.1"
+xorg-xwayland.check = "24.1.12-1.2"
 
 # Arch packaging fix, we don't care
 zenity-gtk3.check = "3.44.2-4"
