@@ -310,6 +310,9 @@ pipewire = { map = "pipewire-jupiter", fixup = "epoch" }
 # bug fix backport
 plasma-desktop.check = "6.4.3-1"
 
+# FIXME(fremont): CEC volume patches
+plasma-pa.check = "6.4.3-2"
+
 # builds from master branch for Qt6
 # FIXME(fremont): needed for HDMI-CEC possibly
 plasma-remotecontrollers.check = "5.26.90.r258.g9ace9a9-2"
@@ -328,6 +331,9 @@ powerbuttond.ignore = true
 
 # steamos-specific hack
 powerdevil.ignore = true
+
+# FIXME(fremont): required for plasma-pa CEC volume patches
+pulseaudio-qt.check = "1.7.0-2"
 
 # some internal tooling, not shipped
 python-libversion.ignore = true
