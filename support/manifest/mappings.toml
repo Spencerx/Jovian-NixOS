@@ -421,7 +421,7 @@ steamos-systemreport.ignore = true
 steamos-tweak-mtu-probing.check = "1-1"
 
 # SteamOS A/B specific patch
-systemd.check = "257.7-2.4"
+systemd.check = "257.7-2.5"
 
 # lul
 ttf-twemoji-default.ignore = true
@@ -445,6 +445,9 @@ vpower.map = true
 
 # no longer used
 wakehook.ignore = true
+
+# FIXME: maybe package this
+wireless-domain-setter.check = "1.0-1"
 
 wireplumber.map = "wireplumber-jupiter"
 
