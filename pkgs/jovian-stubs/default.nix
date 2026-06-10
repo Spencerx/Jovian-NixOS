@@ -15,6 +15,8 @@ stdenv.mkDerivation {
 
     # apparently still used by Steam (see jupiter-legacy-support)
     install -D -m 755 ${./holo-select-branch} $out/bin/steamos-select-branch
-    install -D -m 755 ${./holo-update} $out/bin/steamos-update
+    install -D -m 755 ${./holo-update} $out/bin/steamos-polkit-helpers/steamos-update
+    install -D -m 755 ${./jupiter-biosupdate} $out/bin/steamos-polkit-helpers/jupiter-biosupdate
+    install -D -m 755 ${./jupiter-dock-updater} $out/bin/steamos-polkit-helpers/jupiter-dock-updater
   '';
 }
