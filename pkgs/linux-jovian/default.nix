@@ -4,8 +4,8 @@ let
   inherit (lib) versions;
 
   kernelVersion = "6.18.33";
-  vendorVersion = "valve1";
-  hash = "sha256-MkYCrIsOcuwnCaqrvwaRCN7LBW/mHOotEzl37zhSlzk=";
+  vendorVersion = "valve2";
+  hash = "sha256-EEChv9DSaDqBoMsMDI1PI4ByvUnelqCQdTgIPLHuJ8Y=";
 in
 buildLinux (args // rec {
   version = "${kernelVersion}-${vendorVersion}";
@@ -167,6 +167,9 @@ buildLinux (args // rec {
 
     # Enable Valve LEDs driver
     LEDS_VALVE = module;
+    
+    # Enable realtek dongle for Steam Frame
+    RTW89_8852CU = module;
 
     # Jovian: fix fallout from the vendor-set options
     DRM_AMD_DC_SI = lib.mkForce (option no);
