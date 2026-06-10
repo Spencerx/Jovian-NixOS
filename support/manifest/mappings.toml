@@ -231,6 +231,9 @@ libei.check = "1.4.1-3"
 # DisplayLink stuff
 libevdi.ignore = true
 
+# security backports
+libinput.check = "1.28.1-1.1"
+
 # random rebuild
 libpng.ignore = true
 
