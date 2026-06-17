@@ -102,6 +102,9 @@ drm_janitor.ignore = true
 # does magic telemetry we don't want
 earlyoom.ignore = true
 
+# FIXME(fremont)
+ec-log.ignore = true
+
 # we use nixpkgs version
 f3.ignore = true
 
@@ -146,6 +149,9 @@ holo-fstab-repair.check = "0.2-1"
 
 # the split out locales
 holo-glibc-locales.check = "2.41+r65+ge7c419a29575-1"
+
+# FIXME(fremont): but also other VR stuffs
+holo-grant-cap-sys-nice.check = "1.0-1"
 
 # we don't use those repos
 holo-keyring.ignore = true
@@ -215,7 +221,7 @@ kdumpst.ignore = true
 kmod.check = "34.2-1.1"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.10"
+kwin.check = "6.4.3-1.11"
 kwin-x11.check = "6.4.3-1.2"
 
 # backports
@@ -272,6 +278,7 @@ linux-neptune-615.ignore = true
 
 # old kernel
 linux-neptune-616.ignore = true
+linux-neptune-616-drm-exec.ignore = true
 
 # new kernel
 linux-neptune-618 = { map = "linux_jovian", pkgrel = 1 }
@@ -314,7 +321,7 @@ pipewire = { map = "pipewire-jupiter", fixup = "epoch" }
 plasma-desktop.check = "6.4.3-1"
 
 # FIXME(fremont): CEC volume patches
-plasma-pa.check = "6.4.3-2"
+plasma-pa.check = "6.4.3-3"
 
 # builds from master branch for Qt6
 # FIXME(fremont): needed for HDMI-CEC possibly
@@ -356,7 +363,7 @@ rtkit.check = "0.14-1"
 # unused
 rtl88x2ce-dkms.ignore = true
 
-scx-scheds.check = "1.1.1.linux.steamos-1"
+scx-scheds.check = "1.1.1.linux.steamos-4"
 
 # FIXME: package this
 steam-im-modules.ignore = true
