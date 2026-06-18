@@ -285,6 +285,7 @@ linux-neptune-618 = { map = "linux_jovian", pkgrel = 1 }
 
 # test kernel
 linux-neptune-618-devel.ignore = true
+linux-neptune-618-drm-exec.ignore = true
 
 # we don't identify as SteamOS
 lsb-release.ignore = true
