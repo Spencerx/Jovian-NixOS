@@ -394,6 +394,9 @@ steamdeck-kde-presets.check = "3.9.3-2"
 # very old, unused, but might be interesting? 
 steamfs-git.ignore = true
 
+# Arch packaging hack
+steamos-alias.ignore = true
+
 # more A/B stuff
 steamos-atomupd-client.ignore = true
 
