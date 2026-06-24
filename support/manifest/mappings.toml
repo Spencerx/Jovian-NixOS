@@ -150,7 +150,7 @@ holo-fstab-repair.check = "0.2-1"
 # the split out locales
 holo-glibc-locales.check = "2.41+r65+ge7c419a29575-1"
 
-# FIXME(fremont): but also other VR stuffs
+# FIXME(fremont): moved to jupiter-hw-support, but also other VR stuffs
 holo-grant-cap-sys-nice.check = "1.0-1"
 
 # we don't use those repos
