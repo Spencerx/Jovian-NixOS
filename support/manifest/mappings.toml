@@ -202,7 +202,7 @@ jupiter-firewall.ignore = true
 
 jupiter-hw-support = { map = ["jupiter-hw-support", "steamdeck-hw-theme", "steamdeck-firmware", "holo-polkit-helpers"], pkgrel = 1 }
 
-jupiter-legacy-support.check = "1.159-1"
+jupiter-legacy-support.check = "1.160-1"
 
 # Valve telemetry stuff
 jupiter-steamos-log-submitter.ignore = true
