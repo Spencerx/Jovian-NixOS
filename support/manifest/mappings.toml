@@ -171,6 +171,9 @@ holo-realtek-firmware-toggles.ignore = true
 # dev tooling for Arch packaging
 holo-rust-packaging-tools.ignore = true
 
+# implemented as nixos modules/stub
+holo-session-selection.map = true
+
 # applied as NixOS config
 holo-zram-swap.check = "0.3-0"
 

@@ -7,7 +7,6 @@ stdenv.mkDerivation {
     install -D -m 755 ${./holo-firmware-update} $out/bin/holo-firmware-update
     install -D -m 755 ${./holo-reboot} $out/bin/holo-reboot
     install -D -m 755 ${./holo-select-branch} $out/bin/holo-select-branch
-    install -D -m 755 ${./holo-session-select} $out/bin/holo-session-select
     install -D -m 755 ${./holo-update} $out/bin/holo-update
 
     install -D -m 755 ${./pkexec} $out/bin/pkexec
