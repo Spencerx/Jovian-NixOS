@@ -389,7 +389,7 @@ steam_notif_daemon = { map = true, pkgrel = 3, fixup = "v" }
 steamdeck-dsp = { map = true, pkgrel = 1 }
 
 # we don't ship those but they may be useful to reference
-steamdeck-kde-presets.check = "3.9.2-1"
+steamdeck-kde-presets.check = "3.9.3-2"
 
 # very old, unused, but might be interesting? 
 steamfs-git.ignore = true
