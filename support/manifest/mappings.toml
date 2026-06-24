@@ -165,7 +165,10 @@ holo-nix-offload.ignore = true
 # FIXME: needs matching plymouth
 holo-plymouth-themes.check = "0.6-1"
 
-# FIXME: investigate
+# debug tool
+holo-realtek-firmware-toggles.ignore = true
+
+# dev tooling for Arch packaging
 holo-rust-packaging-tools.ignore = true
 
 # applied as NixOS config
