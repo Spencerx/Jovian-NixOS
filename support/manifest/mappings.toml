@@ -440,8 +440,8 @@ steamos-systemreport.ignore = true
 # applied as NixOS config
 steamos-tweak-mtu-probing.check = "1-1"
 
-# SteamOS A/B specific patch
-systemd.check = "257.7-2.5"
+# SteamOS A/B specific patches and other miscellanea
+systemd.check = "257.7-2.6"
 
 # lul
 ttf-twemoji-default.ignore = true
