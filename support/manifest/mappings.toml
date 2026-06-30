@@ -202,7 +202,7 @@ jupiter-firewall.ignore = true
 
 jupiter-hw-support = { map = ["jupiter-hw-support", "steamdeck-hw-theme", "steamdeck-firmware", "holo-polkit-helpers"], pkgrel = 1 }
 
-jupiter-legacy-support.check = "1.160-1"
+jupiter-legacy-support.check = "1.161-1"
 
 # Valve telemetry stuff
 jupiter-steamos-log-submitter.ignore = true
@@ -230,7 +230,7 @@ kmod.check = "34.2-1.1"
 kscreenlocker.check = "6.4.3-2"
 
 # hack for hidpi on internal display
-kwin.check = "6.4.3-1.11"
+kwin.check = "6.4.3-1.12"
 kwin-x11.check = "6.4.3-1.2"
 
 # backports
@@ -251,6 +251,9 @@ libinput.check = "1.28.1-1.1"
 
 # random rebuild
 libpng.ignore = true
+
+# security backport
+libssh2.ignore = true
 
 # some internal tooling, not shipped
 libversion.ignore = true
